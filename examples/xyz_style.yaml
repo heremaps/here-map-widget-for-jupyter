@@ -1,0 +1,34 @@
+sources:
+    xyz:
+      type: MVT
+layers:
+    m2pcsiNi:
+      data:
+        source: xyz
+      points:
+        filter:
+          $geometry: point
+        draw:
+          points:
+            color: red
+            priority: 500
+            placement: spaced
+            size: 26px
+            placement_spacing: 150px
+            angle: auto
+            flat: true
+            interactive: true
+      points_flagged:
+        draw:
+          points:
+            color: blue
+            priority: 500
+            placement: spaced
+            size: 26px
+            placement_spacing: 150px
+            angle: auto
+            flat: true
+            interactive: true
+        filter:
+          $geometry: "point"
+          properties.GPSFLG: "Flagged for coordinate check"

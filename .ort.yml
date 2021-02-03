@@ -1,0 +1,19 @@
+---
+excludes:
+  paths:
+  - pattern: "examples/**"
+    reason: "EXAMPLE_OF"
+    comment: "Directory only includes examples. Not included in released artifacts."
+  - pattern: "docs/**"
+    reason: "DOCUMENTATION_OF"
+    comment: "Directory is only used for documentation. Not included in released artifacts."
+  - pattern: "requirements_dev.txt"
+    reason: "BUILD_TOOL_OF"
+    comment: "Optional dependencies only used for development / testing."
+  - pattern: "scripts/**"
+    reason: "DOCUMENTATION_OF"
+    comment: "Directory is only used for generating documentation for gitlab pages."
+  scopes:
+  - name: "devDependencies"
+    reason: "DEV_DEPENDENCY_OF"
+    comment: "Packages for development only."

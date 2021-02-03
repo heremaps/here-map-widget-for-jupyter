@@ -1,0 +1,54 @@
+/*
+.mapjs-control-fullscreen{
+  width: 30px;
+  height: 30px;
+}*/
+
+a.mapjs-control-fullscreen-button{
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+
+}
+.mapjs-control-fullscreen a {
+
+  background:#fff url(fullscreen.png) no-repeat 0 0;
+  background-size:26px 52px;
+  }
+  .mapjs-control-fullscreen a {
+    background-position: 2px 2px;
+    }
+  .mapjs-fullscreen-on .mapjs-control-fullscreen a {
+    background-position:0 -26px;
+    }
+  .mapjs-touch.mapjs-fullscreen-on .mapjs-control-fullscreen a {
+    background-position: 2px -24px;
+    }
+
+/* Do not combine these two rules; IE will break.
+.mapjs-container:-webkit-full-screen {
+  width:100%!important;
+  height:100%!important;
+  }*/
+.mapjs-fullscreen-on {
+  width:100%!important;
+  height:100%!important;
+  }
+
+.mapjs-pseudo-fullscreen {
+  position:fixed!important;
+  width:100%!important;
+  height:100%!important;
+  top:0!important;
+  left:0!important;
+  z-index:99999;
+  }
+
+@media
+  (-webkit-min-device-pixel-ratio:2),
+  (min-resolution:192dpi) {
+    .mapjs-control-fullscreen a {
+      background-image:url(fullscreen@2x.png);
+    }
+  }

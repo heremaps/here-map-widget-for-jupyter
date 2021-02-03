@@ -1,0 +1,16 @@
+*.egg-info/
+.ipynb_checkpoints/
+dist/
+build/
+*.py[cod]
+node_modules/
+.idea/
+
+# Compiled javascript
+here_map_widget/static/
+src/*
+package-lock.json
+
+# OS X
+.DS_Store
+venv

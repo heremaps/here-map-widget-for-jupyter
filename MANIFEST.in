@@ -1,0 +1,8 @@
+recursive-include here_map_widget/static *.*
+include map-widget-for-jupyter.json
+include README.md
+include LICENSE
+include requirements*.txt
+include examples/*
+include js/*tgz
+include js/package.json
