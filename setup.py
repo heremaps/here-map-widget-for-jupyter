@@ -176,10 +176,7 @@ setup_args = {
         'sdist': js_prerelease(sdist, strict=True),
         'jsdeps': NPM,
     },
-
-    'project_urls': {
-        "Source": "ssh://git@github.com:heremaps/here-map-widget-for-jupyter.git"
-    },
+    'url': 'https://github.com/heremaps/here-map-widget-for-jupyter',
     'long_description': long_description,
     'long_description_content_type': 'text/markdown',
     'extras_require': {"dev": dev_reqs}

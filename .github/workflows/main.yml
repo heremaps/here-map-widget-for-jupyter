@@ -70,6 +70,9 @@ jobs:
     - name: Build docs (Only on Linux for saving time)
       if: matrix.os == 'ubuntu-latest'
       shell: bash -l {0}
+      env:
+        XYZ_TOKEN: ${{ secrets.XYZ_TOKEN }}
+        LS_API_KEY: ${{ secrets.LS_API_KEY }}
       run: |
         mamba install sphinx sphinx_rtd_theme
         pip install -r docs/requirements.txt

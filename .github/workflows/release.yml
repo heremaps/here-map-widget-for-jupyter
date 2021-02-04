@@ -1,0 +1,47 @@
+name: Publish to PyPI and NPM
+
+on:
+  release:
+    types: [published]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+    - name: Build the package
+      run: |
+        npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
+        cd js
+        npm install --legacy-peer-deps
+        npm run build
+        cd ..
+        python setup.py sdist bdist_wheel
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+          user: __token__
+          password: ${{ secrets.PYPI_TOKEN }}
+          verbose: true
+    - name: Use Node.js 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: Publish to NPM
+      run: |
+        cd js
+        npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
+        npm install --legacy-peer-deps
+        npm run build
+        npm config delete @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
+        npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+        npm publish
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
