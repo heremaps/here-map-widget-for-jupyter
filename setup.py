@@ -117,7 +117,10 @@ class NPM(Command):
 
         if self.should_run_npm_install():
             log.info("Installing build dependencies with npm.  This may take a while...")
-            npmName = self.get_npm_name();
+            npmName = self.get_npm_name()
+            check_call(['npm', 'config', 'set',
+                        '@here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/'],
+                       stdout=sys.stdout, stderr=sys.stderr)
             check_call([npmName, 'install'], cwd=node_root, stdout=sys.stdout, stderr=sys.stderr)
             check_call(['npm', 'pack'], cwd=node_root, stdout=sys.stdout, stderr=sys.stderr)
             os.utime(self.node_modules, None)

@@ -11,5 +11,5 @@ Package Install
 ```bash
 npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
 
-npm install --save here-mapjs
+npm install --save @here/map-widget-for-jupyter
 ```
