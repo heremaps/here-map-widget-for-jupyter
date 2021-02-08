@@ -77,7 +77,7 @@ module.exports = [
             filename: 'index.js',
             path: path.resolve(__dirname, 'dist'),
             libraryTarget: 'amd',
-            publicPath: 'https://unpkg.com/@here/map-widget-for-jupyter@' + version + '/dist/'
+            publicPath: 'https://unpkg.com/map-widget-for-jupyter@' + version + '/dist/'
         },
         devtool: 'source-map',
         module: {

@@ -1,36 +1,44 @@
 # HERE Map Widget for Jupyter
 
+![Tests](https://github.com/heremaps/here-map-widget-for-jupyter/workflows/Tests/badge.svg)
+[![PyPI - Status](https://img.shields.io/pypi/status/here-map-widget-for-jupyter)](https://pypi.org/project/here-map-widget-for-jupyter/)
+[![PyPI - Python Version](https://img.shields.io/pypi/v/here-map-widget-for-jupyter.svg?logo=pypi)](https://pypi.org/project/here-map-widget-for-jupyter/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/here-map-widget-for-jupyter)](https://pypi.org/project/here-map-widget-for-jupyter/)
+[![PyPI - License](https://img.shields.io/pypi/l/here-map-widget-for-jupyter)](https://pypi.org/project/here-map-widget-for-jupyter/)
+[![Downloads](https://pepy.tech/badge/here-map-widget-for-jupyter)](https://pepy.tech/project/here-map-widget-for-jupyter)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/heremaps/here-map-widget-for-jupyter/master?urlpath=lab/tree/examples)
+
 Use [HERE Maps API for JavaScript](https://developer.here.com/develop/javascript-api) in your [Jupyter Notebook](https://jupyter.org/).
 
 ## Usage
 
 **Selecting a basemap:**
 
-![Select base map](images/basemaps.gif)
+![Select base map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/basemaps.gif)
 
 **Loading a GeoJSON data on a map:**
 
-![Use GeoJSON on map](images/geojson.gif)
+![Use GeoJSON on map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/geojson.gif)
 
 **Making use of HERE Maps API for JavaScript primitives such as Marker to draw a SVG icon on the map:**
 
-![Add marker to map](images/marker.gif)
+![Add marker to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/marker.gif)
 
 **Using the search control to search GeoJSON layer data:**
 
-![Add search control to map](images/search-control.gif)
+![Add search control to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/search-control.gif)
 
 **Displaying [GeoPandas](https://geopandas.org/) data on map:**
 
-![Add Geopandas data to map](images/geo-pandas.gif)
+![Add Geopandas data to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/geo-pandas.gif)
 
 **Displaying [XYZ Hub](https://github.com/heremaps/xyz-hub) or [HERE Data Hub](https://developer.here.com/products/data-hub) space data on a map:**
 
-![Add XYZ data to map](images/xyz.gif)
+![Add XYZ data to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/xyz.gif)
 
 **Use [ipywidgets](https://ipywidgets.readthedocs.io/) controls to build an interactive GUI:**
 
-![Add ipywidgets controls](images/widget-control.gif)
+![Add ipywidgets controls](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/widget-control.gif)
 
 ## Prerequisites
 

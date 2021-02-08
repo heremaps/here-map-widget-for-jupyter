@@ -1,0 +1,12 @@
+name: here_map_widget
+channels:
+  - conda-forge
+dependencies:
+  - pip
+  - xyzspaces
+  - jupyterlab==2.2.9
+  - pip:
+    - "-r ../requirements.txt"
+    - "-r ../requirements_dev.txt"
+    - "-r ../docs/requirements.txt"
+    - "-e ../"

@@ -67,6 +67,12 @@ jobs:
       shell: bash -l {0}
       run: python -c 'import here_map_widget'
 
+    - name: Build the package (Only on Linux for saving time)
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash -l {0}
+      run: |
+        python setup.py sdist bdist_wheel
+
     - name: Build docs (Only on Linux for saving time)
       if: matrix.os == 'ubuntu-latest'
       shell: bash -l {0}

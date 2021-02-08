@@ -140,5 +140,3 @@ Installation Example
 
     $ jupyter labextension install @jupyter-widgets/jupyterlab-manager @here/maps-api-for-javascript-widget-for-jupyter-noteboo
     Building jupyterlab assets (build:prod:minimize)
-
-    $ npm config delete @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/

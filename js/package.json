@@ -1,12 +1,12 @@
 {
   "name": "@here/map-widget-for-jupyter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Use HERE Maps API for JavaScript in your Jupyter Notebook.",
   "author": {
     "name": "HERE Europe B.V.",
     "url": "https://here.com"
   },
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "main": "lib/index.js",
   "repository": {
     "type": "git",

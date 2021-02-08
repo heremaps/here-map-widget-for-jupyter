@@ -2,6 +2,12 @@
 
 The example notebooks in this directory demonstrate various functionalities of `HERE Map Widget for Jupyter`.
 
+## Prerequisites
+Before you run the Notebooks make sure you have:
+- A HERE developer account, free and available under [HERE Developer Portal](https://developer.here.com)
+- An [API key](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/dev-apikey.html) from the [HERE Developer Portal](https://developer.here.com)
+- An XYZ API access token from your XYZ Hub server or the [XYZ portal](https://www.here.xyz) see also it's [Getting
+  Started](https://www.here.xyz/getting-started/).
 ## Notebooks
 
 - [Add ipywidgets over map](./add_ipywidgets.ipynb) - Display interactive ipywidget over map and control traits of the map.
