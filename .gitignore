@@ -9,7 +9,7 @@ node_modules/
 # Compiled javascript
 here_map_widget/static/
 src/*
-package-lock.json
+*package-lock.json
 
 # OS X
 .DS_Store

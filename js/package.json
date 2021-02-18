@@ -34,8 +34,8 @@
   "scripts": {
     "clean": "rimraf dist/ && rimraf ../here_map_widget/labextension/ && rimraf ../here_map_widget/nbextension",
     "prepublish": "webpack",
-    "build": "webpack && npm run build:labextension",
-    "build:labextension": "jupyter labextension build .",
+    "build": "webpack",
+    "build:extensions": "webpack && jupyter labextension build .",
     "watch": "webpack --watch --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
