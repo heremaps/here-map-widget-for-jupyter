@@ -32,32 +32,46 @@
     "LICENSE"
   ],
   "scripts": {
-    "clean": "rimraf dist/",
+    "clean": "rimraf dist/ && rimraf ../here_map_widget/labextension/ && rimraf ../here_map_widget/nbextension",
     "prepublish": "webpack",
-    "build": "webpack",
+    "build": "webpack && npm run build:labextension",
+    "build:labextension": "jupyter labextension build .",
     "watch": "webpack --watch --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "css-loader": "3.4.2",
+    "css-loader": "^3.4.2",
+    "file-loader": "^5.0.2",
     "install": "^0.13.0",
     "rimraf": "^2.6.1",
     "style-loader": "^1.1.2",
-    "file-loader": "6.0.0",
-    "webpack": "3.5.5"
+    "webpack": "^5.11.1",
+    "webpack-cli": "^3.3.12",
+    "@jupyterlab/builder": "^3.0.0"
   },
   "dependencies": {
-    "@here/maps-api-for-javascript": "^1.19.2",
-    "@jupyter-widgets/base": "^1.1 || ^2 || ^3",
+    "@here/maps-api-for-javascript": "^1.20.0",
+    "@jupyter-widgets/base": "^2 || ^3 || ^4",
     "@phosphor/messaging": "^1.3.0",
     "@phosphor/widgets": "^1.9.3",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "@turf/centroid": "^6.0.2",
     "@turf/helpers": "^6.1.4",
     "flat": "^5.0.2",
     "lodash": "^4.17.20",
-    "run": "^1.4.0"
+    "run": "^1.4.0",
+    "stream-browserify": "^3.0.0"
   },
   "jupyterlab": {
-    "extension": "lib/labplugin"
+    "extension": "lib/labplugin",
+    "outputDir": "../here_map_widget/labextension",
+    "webpackConfig": "../jlab/webpack.config.js",
+    "sharedPackages": {
+      "@jupyter-widgets/base": {
+        "bundled": false,
+        "singleton": true
+      }
+    }
   }
 }

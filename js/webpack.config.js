@@ -23,6 +23,14 @@ var rules = [
     }
 ]
 
+var resolve = {
+    fallback: {
+        "crypto": require.resolve("crypto-browserify"),
+        "buffer": require.resolve("buffer/"),
+        "stream": require.resolve("stream-browserify")
+    }
+};
+
 
 module.exports = [
     {// Notebook extension
@@ -36,9 +44,20 @@ module.exports = [
         entry: './lib/extension.js',
         output: {
             filename: 'extension.js',
-            path: path.resolve(__dirname, '..', 'here_map_widget', 'static'),
-            libraryTarget: 'amd'
+            path: path.resolve(__dirname, '..', 'here_map_widget', 'nbextension'),
+            libraryTarget: 'amd',
+            publicPath: ''
+        },
+        resolve: resolve,
+        node: {
+               global: false
         }
+//        node: {
+//              process: false,
+//              global: false,
+//              Buffer: false, // ADD THIS
+//              fs: 'empty',
+//        }
     },
     {// Bundle for the notebook containing the custom widget views and models
      //
@@ -49,14 +68,25 @@ module.exports = [
         entry: './lib/notebook.js',
         output: {
             filename: 'index.js',
-            path: path.resolve(__dirname, '..', 'here_map_widget', 'static'),
-            libraryTarget: 'amd'
+            path: path.resolve(__dirname, '..', 'here_map_widget', 'nbextension'),
+            libraryTarget: 'amd',
+            publicPath: ''
         },
         devtool: 'source-map',
         module: {
             rules: rules
         },
-        externals: ['@jupyter-widgets/base']
+        externals: ['@jupyter-widgets/base'],
+        resolve: resolve,
+        node: {
+               global: false
+        }
+//        node: {
+//              process: false,
+//              global: false,
+//              Buffer: false, // ADD THIS
+//              fs: 'empty',
+//        }
     },
     {// Embeddable here_map_widget bundle
      //
@@ -77,12 +107,13 @@ module.exports = [
             filename: 'index.js',
             path: path.resolve(__dirname, 'dist'),
             libraryTarget: 'amd',
-            publicPath: 'https://unpkg.com/map-widget-for-jupyter@' + version + '/dist/'
+            publicPath: 'https://unpkg.com/@here/map-widget-for-jupyter@' + version + '/dist/'
         },
         devtool: 'source-map',
         module: {
             rules: rules
         },
-        externals: ['@jupyter-widgets/base']
+        externals: ['@jupyter-widgets/base'],
+        resolve: resolve
     }
 ];

@@ -3,7 +3,6 @@
 
 """HERE Map Widget for Jupyter - use HERE Maps API for
 JavaScript in your Jupyter Notebook.
-
 This widget enables you to use the HERE Map View in Jupyter Notebook
 to make analysis ofgeospatial data easier and more interactive.
 """
@@ -33,8 +32,15 @@ def _jupyter_nbextension_paths():
     return [
         {
             "section": "notebook",
-            "src": "static",
+            "src": "nbextension",
             "dest": "map-widget-for-jupyter",
             "require": "map-widget-for-jupyter/extension",
         }
     ]
+
+
+def _jupyter_labextension_paths():
+    return [{
+        'src': 'labextension',
+        'dest': "map-widget-for-jupyter"
+    }]
