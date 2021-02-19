@@ -86,7 +86,7 @@ Note on first `jupyter lab --watch`, you may need to touch a file to get Jupyter
 
 ## Documentation
 
-A collection of example notebooks is provided in the [/examples](./examples) directory.
+Documentation is available [here](https://here-map-widget-for-jupyter.readthedocs.io/en/stable/)
 
 ## License
 
