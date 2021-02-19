@@ -40,7 +40,4 @@ def _jupyter_nbextension_paths():
 
 
 def _jupyter_labextension_paths():
-    return [{
-        'src': 'labextension',
-        'dest': "map-widget-for-jupyter"
-    }]
+    return [{"src": "labextension", "dest": "map-widget-for-jupyter"}]

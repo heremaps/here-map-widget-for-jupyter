@@ -8,6 +8,10 @@ on:
     branches:
     - master
 
+defaults:
+  run:
+    shell: bash -l {0}
+
 jobs:
   run:
     runs-on: ${{ matrix.os }}
@@ -28,15 +32,12 @@ jobs:
         channels: conda-forge
 
     - name: Mamba install dependencies
-      shell: bash -l {0}
-      run: mamba install python=${{ matrix.python-version }} pip nodejs
+      run: mamba install python=${{ matrix.python-version }} pip nodejs jupyter-packaging
 
-    - name: Mamba install JupyterLab 2
-      shell: bash -l {0}
-      run: mamba install jupyterlab=2 ipywidgets=7.6
+    - name: Mamba install JupyterLab 3
+      run: mamba install jupyterlab=3 ipywidgets=7.6
 
     - name: Install here-map-widget-for-jupyter
-      shell: bash -l {0}
       run: |
         npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
         cd js
@@ -45,37 +46,27 @@ jobs:
         cd ..
         pip install .[dev]
 
-    - name: Install JupyterLab extension
-      shell: bash -l {0}
-      run: |
-        jupyter nbextension install --py --symlink --sys-prefix here_map_widget
-        jupyter nbextension enable --py --sys-prefix here_map_widget
-        jupyter labextension install js
-
     - name: Check installation files
-      shell: bash -l {0}
       run: |
         test -d $CONDA_PREFIX/share/jupyter/nbextensions/map-widget-for-jupyter
         test -f $CONDA_PREFIX/share/jupyter/nbextensions/map-widget-for-jupyter/extension.js
         test -f $CONDA_PREFIX/share/jupyter/nbextensions/map-widget-for-jupyter/index.js
+        test -d $CONDA_PREFIX/share/jupyter/labextensions/@here/map-widget-for-jupyter
+        test -f $CONDA_PREFIX/share/jupyter/labextensions/@here/map-widget-for-jupyter/package.json
 
     - name: Lint check
-      shell: bash -l {0}
       run: make lint
 
     - name: Import check
-      shell: bash -l {0}
       run: python -c 'import here_map_widget'
 
     - name: Build the package (Only on Linux for saving time)
       if: matrix.os == 'ubuntu-latest'
-      shell: bash -l {0}
       run: |
         python setup.py sdist bdist_wheel
 
     - name: Build docs (Only on Linux for saving time)
       if: matrix.os == 'ubuntu-latest'
-      shell: bash -l {0}
       env:
         XYZ_TOKEN: ${{ secrets.XYZ_TOKEN }}
         LS_API_KEY: ${{ secrets.LS_API_KEY }}
