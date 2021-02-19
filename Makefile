@@ -7,7 +7,8 @@ clean-build: ## remove build artifacts
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -f {} +
 	rm -rf js/*.tgz
-	rm -rf here_map_widget/static
+	rm -rf here_map_widget/nbextension
+	rm -rf here_map_widget/labextension
 	rm -rf js/dist
 	rm -rf js/node_modules
 	rm -rf js/package-lock.json
