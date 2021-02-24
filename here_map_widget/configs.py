@@ -56,6 +56,7 @@ class ServiceNames:
     geocoding = "geocoding"
     maptile = "maptile"
     traffic = "traffic"
+    xyz = "xyz"
 
 
 class URL:
@@ -74,5 +75,11 @@ class OMVUrl(URL):
 
 class MapTileUrl(URL):
     """This class implements configurations for MapTile service url."""
+
+    pass
+
+
+class XYZUrl(URL):
+    """This class implements configurations for XYZ service url."""
 
     pass

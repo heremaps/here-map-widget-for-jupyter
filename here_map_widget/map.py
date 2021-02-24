@@ -93,6 +93,41 @@ class Style(Element):
     base_url = Unicode(default_value=None, allow_none=True).tag(sync=True)
 
 
+class Service(Widget):
+    """Service class.
+
+    Base class for all service types.
+    """
+
+    _view_name = Unicode("ServiceView").tag(sync=True)
+    _model_name = Unicode("ServiceModel").tag(sync=True)
+    _view_module = Unicode("map-widget-for-jupyter").tag(sync=True)
+    _model_module = Unicode("map-widget-for-jupyter").tag(sync=True)
+    _view_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
+    _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
+
+
+class Platform(Service):
+    """Platform Class.
+
+    Platform is a central class from which all other service stubs are created.
+    It contains the shared configs to be passed to the individual service stubs.
+
+    Attributes
+    ----------
+    api_key: string
+        API Key used for authentication.
+    services_config: dict
+        config of various services which are instantiated using :class:`Platform` object.
+    """
+
+    _view_name = Unicode("PlatformView").tag(sync=True)
+    _model_name = Unicode("PlatformModel").tag(sync=True)
+
+    api_key = Unicode("").tag(sync=True)
+    services_config = Dict(default_value=None, allow_none=True).tag(sync=True)
+
+
 class Provider(Widget):
     """Provider class
 
@@ -135,6 +170,9 @@ class XYZ(Provider):
     show_bubble = Bool(False).tag(sync=True)
 
     style = Instance(Style, default_value=None, allow_none=True).tag(
+        sync=True, **widget_serialization
+    )
+    platform = Instance(Platform, default_value=None, allow_none=True).tag(
         sync=True, **widget_serialization
     )
 
@@ -1591,41 +1629,6 @@ class SplitMapControl(Control):
     right_layer = Instance(Layer, default_value=None, allow_none=True).tag(
         sync=True, **widget_serialization
     )
-
-
-class Service(Widget):
-    """Service class.
-
-    Base class for all service types.
-    """
-
-    _view_name = Unicode("ServiceView").tag(sync=True)
-    _model_name = Unicode("ServiceModel").tag(sync=True)
-    _view_module = Unicode("map-widget-for-jupyter").tag(sync=True)
-    _model_module = Unicode("map-widget-for-jupyter").tag(sync=True)
-    _view_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
-    _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
-
-
-class Platform(Service):
-    """Platform Class.
-
-    Platform is a central class from which all other service stubs are created.
-    It contains the shared configs to be passed to the individual service stubs.
-
-    Attributes
-    ----------
-    api_key: string
-        API Key used for authentication.
-    services_config: dict
-        config of various services which are instantiated using :class:`Platform` object.
-    """
-
-    _view_name = Unicode("PlatformView").tag(sync=True)
-    _model_name = Unicode("PlatformModel").tag(sync=True)
-
-    api_key = Unicode("").tag(sync=True)
-    services_config = Dict(default_value=None, allow_none=True).tag(sync=True)
 
 
 class DefaultLayers(Service):

@@ -17,6 +17,7 @@ export class XYZModel extends provider.ProviderModel {
       evt_type: 'tap',
       show_bubble: false,
       style: null,
+      platform: null,
     };
   }
 }
@@ -25,57 +26,74 @@ XYZModel.serializers = _.extend({
   style: {
     deserialize: widgets.unpack_models
   },
+  platform: {
+    deserialize: widgets.unpack_models
+  },
 }, widgets.DOMWidgetModel.serializers);
 
 
 export class XYZView extends provider.ProviderView {
   create_obj() {
-    var platform = new H.service.Platform({
-      apikey: this.map_view.model.get('api_key')
+    const pltform = this.model.get('platform');
+    const style = this.model.get('style');
+
+    const style_promise = style !== null ? this.create_child_view(style) : Promise.resolve(null);
+    const pltform_promise = pltform !== null ? this.create_child_view(pltform) : Promise.resolve(null);
+
+    return Promise.all([pltform_promise, style_promise]).then(result => {
+      const pltform_view = result[0];
+      const style_view = result[1];
+      const platform = pltform_view !== null ? pltform_view.obj : new H.service.Platform({
+        apikey: this.map_view.model.get('api_key')
+      });
+      const st = style_view !== null ? style_view.obj : null;
+      let service = null;
+      if (pltform_view !== null) {
+        service = platform.getXYZService({
+          toBypassToken: true
+        });
+      } else {
+        service = platform.getXYZService({
+          token: this.model.get('token'),
+        });
+      }
+      this.bubble = null; // handle to on/off the bubble.
+      this.obj = new H.service.xyz.Provider(service, this.model.get('space_id'), {});
+      var map = this.map_view.obj;
+      this.obj.addEventListener("pointermove", (evnt) => {
+        const data = evnt.target.getData();
+        this.send({
+          event: evnt.type,
+          position: map.screenToGeo(evnt.currentPointer.viewportX, evnt.currentPointer.viewportY),
+          properties: data.properties,
+          id: data.properties.id,
+          space_id: data.source_layer,
+        });
+      });
+
+      this.obj.addEventListener("tap", (evnt) => {
+        const data = evnt.target.getData();
+        this.send({
+          event: evnt.type,
+          position: map.screenToGeo(evnt.currentPointer.viewportX, evnt.currentPointer.viewportY),
+          properties: data.properties,
+          id: data.properties.id,
+          space_id: data.source_layer,
+        });
+      });
+
+      var style = this.obj.getStyle();
+      style.setInteractive(['xyz'], true);
     });
-    const service = platform.getXYZService({
-      token: this.model.get('token'),
-    });
-    this.bubble = null; // handle to on/off the bubble.
-    this.obj = new H.service.xyz.Provider(service, this.model.get('space_id'), {});
-    // Add style at load time
+  }
+
+  model_events() {
     if (this.model.get('style')) {
       this.create_child_view(this.model.get('style')).then((view) => {
         this.obj.setStyle(view.obj);
       });
     }
-    var map = this.map_view.obj;
-    this.obj.addEventListener("pointermove", (evnt) => {
-      const data = evnt.target.getData();
-      this.send({
-        event: evnt.type,
-        position: map.screenToGeo(evnt.currentPointer.viewportX, evnt.currentPointer.viewportY),
-        properties: data.properties,
-        id: data.properties.id,
-        space_id: data.source_layer,
-      });
-      //          evnt.target.addEventListener("pointerleave", (targetEvent) => {
-      //            });
-    });
-
-    this.obj.addEventListener("tap", (evnt) => {
-      const data = evnt.target.getData();
-      this.send({
-        event: evnt.type,
-        position: map.screenToGeo(evnt.currentPointer.viewportX, evnt.currentPointer.viewportY),
-        properties: data.properties,
-        id: data.properties.id,
-        space_id: data.source_layer,
-      });
-      //          evnt.target.addEventListener("pointerleave", (targetEvent) => {
-      //            });
-    });
-
-    var style = this.obj.getStyle();
-    style.setInteractive(['xyz'], true);
   }
-
-  model_events() {}
 
   mapjs_events() {
     var evt_type = this.model.get('evt_type');

@@ -61,3 +61,40 @@ MapTileUrl.scheme                                   string         scheme
 MapTileUrl.host                                     string         host
 MapTileUrl.path                                     string         path
 ================================================    ============   ================================================
+
+
+XYZ Url Example
+---------------
+
+.. jupyter-execute::
+
+    from here_map_widget import TileLayer, XYZ
+    from here_map_widget import Map, Platform, ServiceNames, XYZUrl
+    import os
+
+    m = Map(api_key=os.environ["LS_API_KEY"], center=[36.59, -98.70], zoom=2)
+
+    services_config = {
+        ServiceNames.xyz: {
+            XYZUrl.scheme: "http",
+            XYZUrl.host: "localhost:8080",
+            XYZUrl.path: "/hub/spaces",
+        }
+    }
+
+    platform = Platform(api_key=os.environ["LS_API_KEY"], services_config=services_config)
+    provider = XYZ(space_id="YOUR-SPACE-ID", platform=platform)
+    space_layer = TileLayer(provider=provider)
+    m.add_layer(space_layer)
+    m
+
+XYZ Url Attributes
+------------------
+
+================================================    ============   ================================================
+Object                                              Type           Value
+================================================    ============   ================================================
+XYZUrl.scheme                                       string         scheme
+XYZUrl.host                                         string         host
+XYZUrl.path                                         string         path
+================================================    ============   ================================================
