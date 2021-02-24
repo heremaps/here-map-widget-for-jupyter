@@ -54,6 +54,7 @@ space_id               string             Space id from which to access the data
 evt_type               string             Event on which to show info bubble for space data, please check :ref:`allowed values <misc_values>`, default value is ``tap``.
 show_bubble            boolean            To determine whether to show info bubble for space data or not
 style                  dict/Style object  To provide style to for the XYZ space data
+platform               Platform           Optional required only for custom Data Hub endpoints.
 ===================    =================  ===
 
 Methods
