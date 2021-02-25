@@ -1,6 +1,7 @@
 Service Urls
 =============
-Config for service urls is maintained in respective classes of services :class:`OMVUrl` and :class:`MapTileUrl`.
+Config for service urls is maintained in respective classes of services :class:`OMVUrl`, :class:`MapTileUrl`
+and :class:`XYZUrl`.
 
 OMV Url Example
 ---------------
@@ -65,6 +66,8 @@ MapTileUrl.path                                     string         path
 
 XYZ Url Example
 ---------------
+If  `XYZ Hub <https://github.com/heremaps/xyz-hub>`_ or `HERE Data Hub <https://developer.here.com/products/data-hub>`_
+is hosted on your local machine.
 
 .. jupyter-execute::
 
