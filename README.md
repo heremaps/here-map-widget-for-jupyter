@@ -69,6 +69,7 @@ Below extra commands are required only if you are using JupyterLab (version 2 or
 
 For a development installation (requires yarn, you can install it with `conda install -c conda-forge yarn`):
 
+    $ npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
     $ git clone https://github.com/heremaps/here-map-widget-for-jupyter.git
     $ cd here-map-widget-for-jupyter
     $ pip install -e .
