@@ -91,7 +91,7 @@ For developing with JupyterLab:
 
 ## Documentation
 
-Documentation is available [here](https://here-map-widget-for-jupyter.readthedocs.io/en/stable/)
+Documentation is available [here](https://here-map-widget-for-jupyter.readthedocs.io/en/latest/)
 
 ## License
 
