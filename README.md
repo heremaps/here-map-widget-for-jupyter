@@ -57,11 +57,13 @@ Install HERE Map Widget for Jupyter from [PyPI](https://pypi.org/project/here-ma
 Below extra commands are required only if you are using classic Jupyter Notebook (version 5.3 or older):
 
     $ jupyter nbextension install --py --sys-prefix here_map_widget
+
     $ jupyter nbextension enable here_map_widget --py --sys-prefix
 
 Below extra commands are required only if you are using JupyterLab (version 2 or older):
 
     $ npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
+
     $ jupyter labextension install @jupyter-widgets/jupyterlab-manager @here/map-widget-for-jupyter
 
 
@@ -77,6 +79,7 @@ For a development installation (requires yarn, you can install it with `conda in
 If you are using the classic Jupyter Notebook you need to install the nbextension:
 
     $ jupyter nbextension install --py --sys-prefix here_map_widget
+
     $ jupyter nbextension enable here_map_widget --py --sys-prefix
 
 
