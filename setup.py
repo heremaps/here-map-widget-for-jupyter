@@ -81,7 +81,6 @@ setup_args = {
     "packages": find_packages(),
     "zip_safe": False,
     "cmdclass": cmdclass,
-    "project_urls": {"Source": "ssh://git@github.com:heremaps/here-map-widget-for-jupyter.git"},
     "long_description": long_description,
     "long_description_content_type": "text/markdown",
     "extras_require": {"dev": dev_reqs},

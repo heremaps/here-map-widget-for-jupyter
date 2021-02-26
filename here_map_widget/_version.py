@@ -4,9 +4,9 @@
 """Project version information."""
 
 # Module version
-version_info = (0, 1, 1)
+version_info = (1, 0, 0)
 
 # Module version accessible using here_map_widget.__version__
 __version__ = "%s.%s.%s" % (version_info[0], version_info[1], version_info[2],)
 
-EXTENSION_VERSION = "^0.1.1"
+EXTENSION_VERSION = "^1.0.0"

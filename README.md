@@ -45,44 +45,49 @@ Use [HERE Maps API for JavaScript](https://developer.here.com/develop/javascript
 Before you can install this package, or use the example notebooks to make sure your system meets the following prerequisities:
 
 - A Python installation, 3.6+ recommended, with the `pip` command available to install dependencies
-- A Node.js installation, 10.13.0+ recommended,  with the `npm` command available to install dependencies
 - A HERE developer account, free and available under [HERE Developer Portal](https://developer.here.com)
 - An [API key](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/dev-apikey.html) from the [HERE Developer Portal](https://developer.here.com)
 
 ## Installation
 
-In order to be able to use the HERE Maps API for JavaScript with `npm` the HERE public repository must be added to your `npm` configuration:
-
-    $ npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
-    
-Install HERE Map Widget for Jupyter Notebook using the commands below:
+Install HERE Map Widget for Jupyter from [PyPI](https://pypi.org/project/here-map-widget-for-jupyter/) using the below command:
 
     $ pip install here-map-widget-for-jupyter
+
+Below extra commands are required only if you are using classic Jupyter Notebook (version 5.3 or older):
+
     $ jupyter nbextension install --py --sys-prefix here_map_widget
     $ jupyter nbextension enable here_map_widget --py --sys-prefix
 
-Install HERE Map Widget for JupyterLab (version 2 or older):
+Below extra commands are required only if you are using JupyterLab (version 2 or older):
 
+    $ npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
     $ jupyter labextension install @jupyter-widgets/jupyterlab-manager @here/map-widget-for-jupyter
 
 
-For a development installation (requires npm to be pre-installed) run:
+### Installation from source repository on GitHub
+
+For a development installation (requires yarn, you can install it with `conda install -c conda-forge yarn`):
 
     $ git clone https://github.com/heremaps/here-map-widget-for-jupyter.git
     $ cd here-map-widget-for-jupyter
     $ pip install -e .
-    $ jupyter nbextension install --py --symlink --sys-prefix here_map_widget
-    $ jupyter nbextension enable --py --sys-prefix here_map_widget
-    $ jupyter labextension install @jupyter-widgets/jupyterlab-manager js
 
-If you are actively developing your extension, we recommend you build JupyterLab with the command below:
+If you are using the classic Jupyter Notebook you need to install the nbextension:
 
-    $ jupyter lab --watch
+    $ jupyter nbextension install --py --sys-prefix here_map_widget
+    $ jupyter nbextension enable here_map_widget --py --sys-prefix
 
-It does take a minute or so to get started, but then hot-reload your JavaScript extension changes.
-For every change, save your JavaScript and then watch the terminal for an update.
 
-Note on first `jupyter lab --watch`, you may need to touch a file to get Jupyter Lab to open.
+Note for developers:
+
+- the ``-e`` pip option allows one to modify the Python code in-place. Restart the kernel in order to see the changes.
+- the ``--symlink`` argument on Linux or OS X allows one to modify the JavaScript code in-place. This feature is not available with Windows.
+
+For developing with JupyterLab:
+
+    $ jupyter labextension develop here_map_widget
+
 
 ## Documentation
 
@@ -92,4 +97,4 @@ Documentation is available [here](https://here-map-widget-for-jupyter.readthedoc
 
 Copyright (C) 2019-2021 HERE Europe B.V.
 
-Unless otherwise noted in `LICENSE` files for specific directories, the [LICENSE](LICENSE) in the root applies to all content in this repository.
+Unless otherwise noted in `LICENSE` files for specific directories, the [LICENSE](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/LICENSE) in the root applies to all content in this repository.

@@ -1,3 +1,5 @@
+.. highlight:: sh
+
 Contributing to HERE Map Widget for Jupyter
 ===========================================
 
@@ -65,25 +67,23 @@ The result is a signed commit message:
 Development
 -------------
 
-For a development installation (requires npm),
+For a development installation (requires yarn, you can install it with ``conda install -c conda-forge yarn``)::
 
     $ git clone https://github.com/heremaps/here-map-widget-for-jupyter.git
-
     $ cd here-map-widget-for-jupyter
-
     $ pip install -e .
 
-    $ jupyter nbextension install --py --symlink --sys-prefix here_map_widget
+If you are using the classic Jupyter Notebook you need to install the nbextension::
 
-    $ jupyter nbextension enable --py --sys-prefix here_map_widget
+    $ jupyter nbextension install --py --sys-prefix here_map_widget
+    $ jupyter nbextension enable here_map_widget --py --sys-prefix
 
-    $ jupyter labextension install @jupyter-widgets/jupyterlab-manager js
 
-When actively developing your extension, build Jupyter Lab with the command:
+Note for developers:
 
-    $ jupyter lab --watch
+- the ``-e`` pip option allows one to modify the Python code in-place. Restart the kernel in order to see the changes.
+- the ``--symlink`` argument on Linux or OS X allows one to modify the JavaScript code in-place. This feature is not available with Windows.
 
-This takes a minute or so to get started, but then allows you to hot-reload your JavaScript extension.
-To see a change, save your javascript, watch the terminal for an update.
+For developing with JupyterLab::
 
-Note on first `jupyter lab --watch`, you may need to touch a file to get Jupyter Lab to open.
+    $ jupyter labextension develop here_map_widget

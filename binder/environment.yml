@@ -4,8 +4,7 @@ channels:
 dependencies:
   - pip
   - xyzspaces
-  - jupyterlab==2.2.9
+  - jupyterlab=3
   - pip:
-    - "-r ../requirements.txt"
-    - "-r ../requirements_dev.txt"
     - "-r ../docs/requirements.txt"
+    - here-map-widget-for-jupyter
