@@ -3,15 +3,22 @@ name: Publish to PyPI and NPM
 on:
   release:
     types: [published]
+
+defaults:
+  run:
+    shell: bash -l {0}
+
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.8]
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
+
     - name: Setup conda
       uses: conda-incubator/setup-miniconda@v2
       with:
@@ -25,9 +32,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel twine jupyter-packaging
     - name: Build the package
-      uses: actions/setup-node@v2
-      with:
-        node-version: 12
       run: |
         node --version
         npm --version
