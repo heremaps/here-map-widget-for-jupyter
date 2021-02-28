@@ -1836,11 +1836,13 @@ class Map(DOMWidget, InteractMixin):
         return proposal.value
 
     def add_layer(self, layer):
+        """Add layer from map."""
         if layer.model_id in self._layer_ids:
             raise Exception("layer already on map: %r" % layer)
         self.layers = tuple([l for l in self.layers] + [layer])
 
     def remove_layer(self, layer):
+        """Remove layer from map."""
         if layer.model_id not in self._layer_ids:
             raise Exception("layer not on map: %r" % layer)
         self.layers = tuple([l for l in self.layers if l.model_id != layer.model_id])
@@ -1860,11 +1862,13 @@ class Map(DOMWidget, InteractMixin):
         return proposal.value
 
     def add_object(self, object):
+        """Add object to map."""
         if object.model_id in self._object_ids:
             raise Exception("object already on map: %r" % object)
         self.objects = tuple([o for o in self.objects] + [object])
 
     def add_objects(self, objects: list):
+        """Add objects to map."""
         cur_objs = list(self.objects)
         for object in objects:
             if object.model_id in self._object_ids:
@@ -1873,6 +1877,7 @@ class Map(DOMWidget, InteractMixin):
         self.objects = tuple(cur_objs)
 
     def remove_object(self, object):
+        """Remove object from map."""
         if object.model_id not in self._object_ids:
             raise Exception("object not on map: %r" % object)
         self.objects = tuple([o for o in self.objects if o.model_id != object.model_id])
@@ -1892,11 +1897,13 @@ class Map(DOMWidget, InteractMixin):
         return proposal.value
 
     def add_control(self, control):
+        """Add control to map."""
         if control.model_id in self._control_ids:
             raise Exception("control already on map: %r" % control)
         self.controls = tuple([o for o in self.controls] + [control])
 
     def remove_control(self, control):
+        """Remove control from map."""
         if control.model_id not in self._control_ids:
             raise Exception("control not on map: %r" % control)
         self.controls = tuple([o for o in self.controls if o.model_id != control.model_id])
@@ -1930,3 +1937,36 @@ class Map(DOMWidget, InteractMixin):
         if bubble.model_id not in self._bubble_ids:
             raise Exception("control not on map: %r" % bubble)
         self.bubbles = tuple([b for b in self.bubbles if b.model_id != bubble.model_id])
+
+    def __iadd__(self, item):
+        if isinstance(item, Layer):
+            self.add_layer(item)
+        elif isinstance(item, Control):
+            self.add_control(item)
+        elif isinstance(item, Object):
+            self.add_object(item)
+        elif isinstance(item, InfoBubble):
+            self.add_bubble(item)
+        return self
+
+    def __isub__(self, item):
+        if isinstance(item, Layer):
+            self.remove_layer(item)
+        elif isinstance(item, Control):
+            self.remove_control(item)
+        elif isinstance(item, Object):
+            self.remove_object(item)
+        elif isinstance(item, InfoBubble):
+            self.remove_bubble(item)
+        return self
+
+    def __add__(self, item):
+        if isinstance(item, Layer):
+            self.add_layer(item)
+        elif isinstance(item, Control):
+            self.add_control(item)
+        elif isinstance(item, Object):
+            self.add_object(item)
+        elif isinstance(item, InfoBubble):
+            self.add_bubble(item)
+        return self

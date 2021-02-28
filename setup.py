@@ -3,19 +3,19 @@
 
 """Project setup file."""
 
-import os
 import json
+import os
 from distutils import log
-from setuptools import setup, find_packages
 
 from jupyter_packaging import (
-    create_cmdclass,
-    install_npm,
-    ensure_targets,
     combine_commands,
+    create_cmdclass,
+    ensure_targets,
     get_version,
-    skip_if_exists
+    install_npm,
+    skip_if_exists,
 )
+from setuptools import find_packages, setup
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -33,8 +33,8 @@ js_dir = os.path.join(here, "js")
 
 # Representative files that should exist after a successful build
 jstargets = [
-    os.path.join('here_map_widget/nbextension', 'index.js'),
-    os.path.join('here_map_widget/labextension', 'package.json'),
+    os.path.join("here_map_widget/nbextension", "index.js"),
+    os.path.join("here_map_widget/labextension", "package.json"),
 ]
 
 data_files_spec = [
@@ -49,14 +49,14 @@ data_files_spec = [
 
 cmdclass = create_cmdclass("jsdeps", data_files_spec=data_files_spec)
 js_command = combine_commands(
-    install_npm(js_dir, npm=["yarn"], build_cmd='build:extensions'), ensure_targets(jstargets),
+    install_npm(js_dir, npm=["yarn"], build_cmd="build:extensions"), ensure_targets(jstargets),
 )
 
-is_repo = os.path.exists(os.path.join(here, '.git'))
+is_repo = os.path.exists(os.path.join(here, ".git"))
 if is_repo:
-    cmdclass['jsdeps'] = js_command
+    cmdclass["jsdeps"] = js_command
 else:
-    cmdclass['jsdeps'] = skip_if_exists(jstargets, js_command)
+    cmdclass["jsdeps"] = skip_if_exists(jstargets, js_command)
 
 # Get the core dependencies and installs
 with open(os.path.join(here, "requirements.txt"), encoding="utf-8") as f:

@@ -28,11 +28,11 @@ clean-test: ## remove test and coverage artifacts
 	find . -name '.ipynb_checkpoints' -exec rm -fr {} +
 
 black:
-	black -l 99 here_map_widget/*.py
-	isort --atomic here_map_widget/*.py
+	black -l 99 *.py
+	isort --atomic *.py
 
 lint:
-	isort --check --diff here_map_widget/*.py
-	black -l 99 --diff --check here_map_widget/*.py
+	isort --check --diff *.py
+	black -l 99 --diff --check *.py
 
 
