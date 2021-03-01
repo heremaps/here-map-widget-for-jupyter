@@ -253,6 +253,26 @@ class HeatMap(Provider):
         self.clear_flag = 1 if self.clear_flag == 0 else 0
 
 
+class IML(Provider):
+    """IML Provider class.
+
+    Provider for fetching data from Interactive Map Layer.
+
+    Attributes
+    ----------
+    catalog_hrn: string
+        Catalog HRN.
+    layer_id: string
+        Id of interactive map layer.
+    """
+
+    _view_name = Unicode("IMLView").tag(sync=True)
+    _model_name = Unicode("IMLModel").tag(sync=True)
+
+    catalog_hrn = Unicode().tag(sync=True)
+    layer_id = Unicode().tag(sync=True)
+
+
 class Layer(Widget):
     """Layer class
 
