@@ -40,10 +40,6 @@ jobs:
     - name: Install here-map-widget-for-jupyter
       run: |
         npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
-        cd js
-        npm install --legacy-peer-deps
-        npm run build
-        cd ..
         pip install .[dev]
 
     - name: Check installation files
