@@ -23,7 +23,7 @@ export class StyleView extends element.ElementView {
   create_obj() {
     const config = this.model.get('config');
     const base_url = this.model.get('base_url');
-    this.obj = new H.map.Style(config, base_url);
+    this.obj = new H.map.render.webgl.Style(config, base_url);
 
   }
 
