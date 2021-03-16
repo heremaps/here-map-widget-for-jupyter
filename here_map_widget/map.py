@@ -1721,7 +1721,7 @@ class OMV(Provider):
     _view_name = Unicode("OMVView").tag(sync=True)
     _model_name = Unicode("OMVModel").tag(sync=True)
 
-    path = Unicode().tag(sync=True)
+    path = Unicode("/v2/vectortiles/core/mc").tag(sync=True)
     platform = Instance(Platform).tag(sync=True, **widget_serialization)
     style = Instance(Style).tag(sync=True, **widget_serialization)
 
