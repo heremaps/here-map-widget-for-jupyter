@@ -39,6 +39,7 @@ var heatmap = require('./provider/HeatMap.js');
 var omv = require('./provider/OMV.js');
 var maptile =  require('./provider/MapTile.js');
 var cluster = require('./provider/MarkerCluster.js');
+var imagetile = require('./provider/ImageTile.js');
 
 var control = require('./control/Control.js');
 var zoomcontrol = require('./control/ZoomControl.js');
@@ -115,6 +116,7 @@ module.exports = {
     MapTileView: maptile.MapTileView,
     MarkerClusterView: cluster.MarkerClusterView,
     ObjectLayerView: objectlayer.ObjectLayerView,
+    ImageTileProviderView: imagetile.ImageTileProviderView,
 
     // models
     MapModel : map.MapModel,
@@ -164,4 +166,5 @@ module.exports = {
     MapTileModel: maptile.MapTileModel,
     MarkerClusterModel: cluster.MarkerClusterModel,
     ObjectLayerModel: objectlayer.ObjectLayerModel,
+    ImageTileProviderModel: imagetile.ImageTileProviderModel,
 };
