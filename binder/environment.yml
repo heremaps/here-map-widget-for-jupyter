@@ -5,5 +5,4 @@ dependencies:
   - pip
   - xyzspaces
   - jupyterlab=3
-  - pip:
-    - "-r ../docs/requirements.txt"
+  - geopandas
