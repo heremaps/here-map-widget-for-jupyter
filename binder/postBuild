@@ -1,2 +1,8 @@
+# installing from master branch
+npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
+pip install -e .
+jupyter nbextension install --py --sys-prefix here_map_widget
+jupyter nbextension enable here_map_widget --py --sys-prefix
+
 # Notebooks with extensions that auto-run code must be "trusted" to work the first time
 jupyter trust examples/*.ipynb

@@ -7,4 +7,3 @@ dependencies:
   - jupyterlab=3
   - pip:
     - "-r ../docs/requirements.txt"
-    - here-map-widget-for-jupyter
