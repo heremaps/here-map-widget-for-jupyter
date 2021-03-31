@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+here-map-widget-for-jupyter 1.0.1 (2021-03-31)
+----------------------------------------------
+
+- Add ``ImageTileProvider`` to support XYZ and WMTS Tile layer.
+- Add support for ``+=`` and ``-=`` operators to add and remove Layers, Controls, and Objects.
+
+
 here-map-widget-for-jupyter 1.0.0 (2021-02-26)
 ----------------------------------------------
 
