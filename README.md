@@ -15,31 +15,31 @@ Use [HERE Maps API for JavaScript](https://developer.here.com/develop/javascript
 
 ## Usage
 
-**Selecting a basemap:**
+### Selecting a basemap:
 
 ![Select base map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/basemaps.gif)
 
-**Loading a GeoJSON data on a map:**
+### Loading a GeoJSON data on a map:
 
 ![Use GeoJSON on map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/geojson.gif)
 
-**Making use of HERE Maps API for JavaScript primitives such as Marker to draw a SVG icon on the map:**
+### Making use of HERE Maps API for JavaScript primitives such as Marker to draw a SVG icon on the map:
 
 ![Add marker to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/marker.gif)
 
-**Using the search control to search GeoJSON layer data:**
+### Using the search control to search GeoJSON layer data:
 
 ![Add search control to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/search-control.gif)
 
-**Displaying [GeoPandas](https://geopandas.org/) data on map:**
+### Displaying [GeoPandas](https://geopandas.org/) data on map:
 
 ![Add Geopandas data to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/geo-pandas.gif)
 
-**Displaying [XYZ Hub](https://github.com/heremaps/xyz-hub) or [HERE Data Hub](https://developer.here.com/products/data-hub) space data on a map:**
+### Displaying [XYZ Hub](https://github.com/heremaps/xyz-hub) or [HERE Data Hub](https://developer.here.com/products/data-hub) space data on a map:
 
 ![Add XYZ data to map](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/xyz.gif)
 
-**Use [ipywidgets](https://ipywidgets.readthedocs.io/) controls to build an interactive GUI:**
+### Use [ipywidgets](https://ipywidgets.readthedocs.io/) controls to build an interactive GUI:
 
 ![Add ipywidgets controls](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/widget-control.gif)
 
