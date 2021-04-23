@@ -40,6 +40,7 @@ var omv = require('./provider/OMV.js');
 var maptile =  require('./provider/MapTile.js');
 var cluster = require('./provider/MarkerCluster.js');
 var iml = require('./provider/IML.js');
+var imagetile = require('./provider/ImageTile.js');
 
 var control = require('./control/Control.js');
 var zoomcontrol = require('./control/ZoomControl.js');
@@ -117,6 +118,7 @@ module.exports = {
     MarkerClusterView: cluster.MarkerClusterView,
     ObjectLayerView: objectlayer.ObjectLayerView,
     IMLView : iml.IMLView,
+    ImageTileProviderView: imagetile.ImageTileProviderView,
 
     // models
     MapModel : map.MapModel,
@@ -167,4 +169,5 @@ module.exports = {
     MarkerClusterModel: cluster.MarkerClusterModel,
     ObjectLayerModel: objectlayer.ObjectLayerModel,
     IMLModel : iml.IMLModel,
+    ImageTileProviderModel: imagetile.ImageTileProviderModel,
 };

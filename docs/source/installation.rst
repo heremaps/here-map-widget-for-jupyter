@@ -3,6 +3,10 @@
 Installation
 ============
 
+Install HERE Map Widget for Jupyter with conda from the Anaconda `conda-forge channel <https://anaconda.org/conda-forge/here-map-widget-for-jupyter>`_ using the below command::
+
+    $ conda install -c conda-forge here-map-widget-for-jupyter
+
 Install HERE Map Widget for Jupyter from `PyPI <https://pypi.org/project/here-map-widget-for-jupyter/>`_ using the below command::
 
     $ pip install here-map-widget-for-jupyter

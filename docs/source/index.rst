@@ -55,6 +55,7 @@ For full list of functionalities please see below sections.
    api_reference/layer/kml
    api_reference/layer/heatmap
    api_reference/layer/markercluster
+   api_reference/layer/tile_layer
 
 
 .. toctree::

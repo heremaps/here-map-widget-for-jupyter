@@ -1741,7 +1741,7 @@ class OMV(Provider):
     _view_name = Unicode("OMVView").tag(sync=True)
     _model_name = Unicode("OMVModel").tag(sync=True)
 
-    path = Unicode().tag(sync=True)
+    path = Unicode("/v2/vectortiles/core/mc").tag(sync=True)
     platform = Instance(Platform).tag(sync=True, **widget_serialization)
     style = Instance(Style).tag(sync=True, **widget_serialization)
 
@@ -1762,7 +1762,7 @@ class MarkerCluster(Provider):
         The minimum point weight sum to form a cluster.
     min_zoom: Int, default 0
         The minimum supported zoom level.
-    maz_zoom: Int, default 22
+    max_zoom: Int, default 22
         The maximum supported zoom level.
     """
 
@@ -1776,6 +1776,43 @@ class MarkerCluster(Provider):
     max_zoom = Int(default_value=22).tag(sync=True)
     show_bubble = Bool(False).tag(sync=True)
     evt_type = Unicode("tap").tag(sync=True)
+
+
+class ImageTileProvider(Provider):
+    """ImageTileProvider class.
+    
+    Provider for loading data from XYZ tile setvers and WMTS sources.
+    
+    Attributes
+    ----------
+    url: string
+        A string representing provider's URL.
+    min_zoom: Int, default 0
+        The minimum supported zoom level.
+    max_zoom: Int, default 22
+        The maximum supported zoom level.
+    opacity: float default 1.0
+        The opacity to use for the rendering of the provided tiles in range [0..1] where 0.0 means full 
+        transparent and 1.0 means full opaque.
+    tile_size: Int, default 256
+        The size of a tile as edge length in pixels. 
+        It must be 2^n where n is in the range [0 ... 30].
+    headers: Dict
+        A dictionaary of headers to be sent with each request made by the provider.
+    attribution: string
+        Tiles service attribution.
+    """
+    
+    _view_name = Unicode("ImageTileProviderView").tag(sync=True)
+    _model_name = Unicode("ImageTileProviderModel").tag(sync=True)
+    
+    url = Unicode().tag(sync=True)
+    min_zoom = Int(default_value=0).tag(sync=True)
+    max_zoom = Int(default_value=22).tag(sync=True)
+    opacity = Float(default_value=1.0).tag(sync=True)
+    tile_size = Int(default_value=256).tag(sync=True)
+    headers = Dict(default_value={}).tag(sync=True)
+    attribution = Unicode().tag(sync=True)
 
 
 class Map(DOMWidget, InteractMixin):
