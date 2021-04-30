@@ -9,16 +9,21 @@ const PMessaging = require('@phosphor/messaging');
 const PWidgets = require('@phosphor/widgets');
 
 class WidgetControl extends H.ui.Control {
-  constructor(sub_widget) {
+  constructor(sub_widget, opts) {
     super();
     this._sub_widget = sub_widget;
+    this.transparentBg = opts.transparentBg;
   }
 
   renderInternal(el, doc) {
-    this.div = doc.createElement('div');
-    this.div.className = 'H_ctl H_el H_grp';
-    this.div.appendChild(this._sub_widget);
-    el.appendChild(this.div);
+    if ( this.transparentBg ) {
+      el.appendChild(this._sub_widget);
+    } else {
+      this.div = doc.createElement('div');
+      this.div.className = 'H_ctl H_el H_grp';
+      this.div.appendChild(this._sub_widget);
+      el.appendChild(this.div);
+    }
     super.renderInternal(el, doc);
   }
 
@@ -42,6 +47,7 @@ export class WidgetControlModel extends control.ControlModel {
       name: "WidgetControl",
       alignment: "RIGHT_BOTTOM",
       widget: null,
+      transparent_bg: false,
     }
   }
 }
@@ -61,7 +67,8 @@ export class WidgetControlView extends control.ControlView {
     if (widget_model) {
       return this.create_child_view(widget_model).then(view => {
         this.widget_view = view;
-        this.obj = new WidgetControl(view.el);
+        let options = {transparentBg: this.model.get('transparent_bg')};
+        this.obj = new WidgetControl(view.el, options);
         this.obj.setAlignment(_.get(H.ui.LayoutAlignment, this.model.get('alignment')));
       });
     }
