@@ -1482,6 +1482,8 @@ class WidgetControl(Control):
         defaults to RIGHT_BOTTOM.
     widget: object
         ipywidget object to be added on the map.
+    transparent_bg: bool
+        If set to ``True`` widget will be added as transparent on Map.
     """
 
     _view_name = Unicode("WidgetControlView").tag(sync=True)
@@ -1490,6 +1492,7 @@ class WidgetControl(Control):
     name = Unicode("WidgetControl").tag(sync=True)
     alignment = Unicode("RIGHT_BOTTOM").tag(sync=True)
     widget = Instance(DOMWidget).tag(sync=True, **widget_serialization)
+    transparent_bg = Bool(False).tag(sync=True)
 
 
 class FullscreenControl(Control):

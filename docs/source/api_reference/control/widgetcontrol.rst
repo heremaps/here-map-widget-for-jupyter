@@ -1,7 +1,7 @@
 Widget Control
 ==============
 
-``Widget Control`` is an ``here-map-widget-for-jupyter`` class that allows integration of various ipywidgets with ``here-map-widget-for-jupyter``.
+``Widget Control`` is an ``here-map-widget-for-jupyter`` class that allows integration of various `ipywidgets <https://ipywidgets.readthedocs.io/en/7.6.3/examples/Widget%20List.html>`_ with ``here-map-widget-for-jupyter``.
 
 Example
 -------
@@ -31,4 +31,5 @@ Attribute              Type                                                     
 name                   string                                                          Unique id of the widget, default value is SplitMapControl
 alignment              string                                                          The layout alignment which should be applied to the ``Widget Control``, please check :ref:`allowed values <misc_values>`, defaults to ``RIGHT_BOTTOM``
 widget                 object of ipywidget                                             The ipywidget to be added
+transparent_bg         boolean                                                         If set to ``True``, widget will be added with transparent background. Default False.
 ===================    ============================================================    ===
