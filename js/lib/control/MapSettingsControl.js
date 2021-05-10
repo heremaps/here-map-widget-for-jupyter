@@ -127,7 +127,31 @@ export class MapSettingsControlView extends control.ControlView {
     });
   }
 
+  toggle_obj() {
+    const controlName = this.model.get('name');
+    this.map_view.ui.removeControl(controlName);
+    delete this.obj;
+    return Promise.resolve(this.create_obj()).then(() => {
+      this.map_view.ui.addControl(this.model.get('name'), this.obj);
+    });
+  }
+
   model_events() {
-    //
+    this.listenTo(
+      this.model,
+      'change:layers',
+      function() {
+        this.toggle_obj();
+      },
+      this
+    );
+    this.listenTo(
+      this.model,
+      'change:basemaps',
+      function() {
+        this.toggle_obj();
+      },
+      this
+    );
   }
 }
