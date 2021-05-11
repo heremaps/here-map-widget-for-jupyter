@@ -98,8 +98,6 @@ export class MapSettingsControlView extends control.ControlView {
 
     return this.layer_views.update(this.model.get('layers')).then(() => {
       var LayersArr = [];
-      // hack reversing the viewArr as it is not in sync with ViewNames
-      this.viewArr.reverse();
       this.viewNames.forEach((lname, index) => {
         var lobj = this.viewArr[index];
         var entry = new H.ui.MapSettingsControl();
@@ -118,10 +116,10 @@ export class MapSettingsControlView extends control.ControlView {
   }
 
   add_layer_model(child_model) {
-    this.viewNames.push(child_model['label']);
     return this.create_child_view(child_model['layer'], {
       map_view: this.map_view
     }).then(view => {
+      this.viewNames.push(child_model['label']);
       this.viewArr.push(view.obj);
       return view;
     });
