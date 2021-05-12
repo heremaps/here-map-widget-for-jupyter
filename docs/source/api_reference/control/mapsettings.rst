@@ -52,3 +52,13 @@ alignment              string                                                   
 basemaps               List of strings                                                 The list of base layers to be shown in the map settings control, selecting an entry changes map base layer
 layers                 List of Layers                                                  The list of layers to be shown in the map settings control after the baseLayers list
 ===================    ============================================================    ===
+
+Methods
+-------
+
+=============  ===============     ===
+Method         Arguments           Doc
+=============  ===============     ===
+add_layers     List                Add layers to control
+remove_layers  List                Remove layers from control
+=============  ===============     ===
