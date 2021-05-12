@@ -28,11 +28,11 @@ clean-test: ## remove test and coverage artifacts
 	find . -name '.ipynb_checkpoints' -exec rm -fr {} +
 
 black:
-	black -l 99 *.py
-	isort --atomic *.py
+	black -l 99 .
+	isort --atomic .
 
 lint:
-	isort --check --diff *.py
-	black -l 99 --diff --check *.py
+	isort --check --diff .
+	black -l 99 --diff --check .
 
 

@@ -1467,6 +1467,53 @@ class MapSettingsControl(Control):
     basemaps = List(trait=Unicode()).tag(sync=True)
     layers = List(Dict()).tag(trait=Instance(Layer), sync=True, **widget_serialization)
 
+    _layer_ids = List()
+
+    @validate("layers")
+    def _validate_layers(self, proposal):
+        """Validate layers list.
+
+        Makes sure only one instance of any given layer can exist in the
+        layers list.
+        """
+        self._layer_ids = [lr["layer"].model_id for lr in proposal.value]
+        if len(set(self._layer_ids)) != len(self._layer_ids):
+            raise Exception("duplicate layer detected, only use each layer once")
+        return proposal.value
+
+    def add_layers(self, layers):
+        """Add layers to map."""
+        for layer in layers:
+            if layer["layer"].model_id in self._layer_ids:
+                raise Exception("layer already on map: %r" % layer)
+        self.layers = tuple([lr for lr in self.layers] + layers)
+
+    def remove_layers(self, layers):
+        """Remove layers from map."""
+        for layer in layers:
+            if layer["layer"].model_id not in self._layer_ids:
+                raise Exception("layer not on map: %r" % layer)
+
+        remove_layer_ids = set([lr["layer"].model_id for lr in layers])
+        self.layers = tuple(
+            [lyr for lyr in self.layers if lyr["layer"].model_id not in remove_layer_ids]
+        )
+
+    def __iadd__(self, item):
+        if isinstance(item, list):
+            self.add_layers(item)
+        return self
+
+    def __isub__(self, item):
+        if isinstance(item, list):
+            self.remove_layers(item)
+        return self
+
+    def __add__(self, item):
+        if isinstance(item, list):
+            self.add_layers(item)
+        return self
+
 
 class WidgetControl(Control):
     """WidgetControl class
@@ -1805,10 +1852,10 @@ class ImageTileProvider(Provider):
     attribution: string
         Tiles service attribution.
     """
-    
+
     _view_name = Unicode("ImageTileProviderView").tag(sync=True)
     _model_name = Unicode("ImageTileProviderModel").tag(sync=True)
-    
+
     url = Unicode().tag(sync=True)
     min_zoom = Int(default_value=0).tag(sync=True)
     max_zoom = Int(default_value=22).tag(sync=True)
