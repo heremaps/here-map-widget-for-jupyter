@@ -416,6 +416,17 @@ export class MapView extends widgets.DOMWidgetView {
       },
       this
     );
+
+    this.listenTo(
+      this.model,
+      'change:basemap',
+      function() {
+        this.create_child_view(this.model.get('basemap')).then((view) => {
+          this.obj.setBaseLayer(view.obj)
+        });
+      },
+      this
+    );
   }
 
   processPhosphorMessage(msg) {
