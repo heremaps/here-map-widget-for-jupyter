@@ -286,7 +286,7 @@ class Layer(Widget):
     _view_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
     _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
 
-    name = Unicode('').tag(sync=True)
+    name = Unicode("").tag(sync=True)
 
 
 class TileLayer(Layer):
@@ -1709,8 +1709,8 @@ class LayersControl(Control):
     A control which allows hiding/showing different layers on the Map.
     """
 
-    _view_name = Unicode('LayersControlView').tag(sync=True)
-    _model_name = Unicode('LayersControlModel').tag(sync=True)
+    _view_name = Unicode("LayersControlView").tag(sync=True)
+    _model_name = Unicode("LayersControlModel").tag(sync=True)
 
     name = Unicode("LayersControl").tag(sync=True)
     alignment = Unicode("RIGHT_TOP").tag(sync=True)
@@ -1983,9 +1983,7 @@ class Map(DOMWidget, InteractMixin):
                 raise Exception("layer not on map: %r" % layer)
 
         remove_layer_ids = set([lr.model_id for lr in layers])
-        self.layers = tuple(
-            [lyr for lyr in self.layers if lyr.model_id not in remove_layer_ids]
-        )
+        self.layers = tuple([lyr for lyr in self.layers if lyr.model_id not in remove_layer_ids])
 
     _object_ids = List()
 
