@@ -52,6 +52,7 @@ var fullscreencontrol = require('./control/FullscreenControl.js');
 var distnacemeasurement = require('./control/DistanceMeasurementControl.js');
 var searchcontrol = require('./control/SearchControl.js');
 var splitcontrol = require('./control/SplitMapControl.js');
+var layersconstrol = require('./control/LayersControl.js');
 
 var element = require('./element/Element.js');
 var infobubble = require('./element/InfoBubble.js');
@@ -119,6 +120,7 @@ module.exports = {
     ObjectLayerView: objectlayer.ObjectLayerView,
     IMLView : iml.IMLView,
     ImageTileProviderView: imagetile.ImageTileProviderView,
+    LayersControlView: layersconstrol.LayersControlView,
 
     // models
     MapModel : map.MapModel,
@@ -170,4 +172,5 @@ module.exports = {
     ObjectLayerModel: objectlayer.ObjectLayerModel,
     IMLModel : iml.IMLModel,
     ImageTileProviderModel: imagetile.ImageTileProviderModel,
+    LayersControlModel: layersconstrol.LayersControlModel
 };
