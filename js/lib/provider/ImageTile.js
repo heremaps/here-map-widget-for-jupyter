@@ -32,8 +32,6 @@ export class ImageTileProviderView extends provider.ProviderView {
     const opacity = this.model.get('opacity');
     const tileSize = this.model.get('tile_size');
     const headers = this.model.get('headers');
-    console.log('FINAL TESTING..');
-    console.log(url);
     this.obj = new H.map.provider.ImageTileProvider({
         min: min,
         max: max,
@@ -46,7 +44,6 @@ export class ImageTileProviderView extends provider.ProviderView {
         
     });
     const attribution = this.model.get('attribution');
-    console.log(attribution);
     if ( attribution ) {
       this.obj.getCopyrights = function (bounds, level) {
         return [{

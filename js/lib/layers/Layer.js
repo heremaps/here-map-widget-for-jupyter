@@ -14,6 +14,8 @@ export class LayerModel extends widgets.WidgetModel {
       _model_name: 'LayerModel',
       _view_module: 'map-widget-for-jupyter',
       _model_module: 'map-widget-for-jupyter',
+
+      name: ''
     };
   }
 }

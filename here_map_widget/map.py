@@ -286,6 +286,8 @@ class Layer(Widget):
     _view_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
     _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
 
+    name = Unicode('').tag(sync=True)
+
 
 class TileLayer(Layer):
     """Tile layer class
@@ -1701,6 +1703,19 @@ class SplitMapControl(Control):
     )
 
 
+class LayersControl(Control):
+    """LayersControl class.
+
+    A control which allows hiding/showing different layers on the Map.
+    """
+
+    _view_name = Unicode('LayersControlView').tag(sync=True)
+    _model_name = Unicode('LayersControlModel').tag(sync=True)
+
+    name = Unicode("LayersControl").tag(sync=True)
+    alignment = Unicode("RIGHT_TOP").tag(sync=True)
+
+
 class DefaultLayers(Service):
     """DefaultLayers Class.
 
@@ -1948,11 +1963,29 @@ class Map(DOMWidget, InteractMixin):
             raise Exception("layer already on map: %r" % layer)
         self.layers = tuple([l for l in self.layers] + [layer])
 
+    def add_layers(self, layers):
+        """Add layers to map."""
+        for layer in layers:
+            if layer.model_id in self._layer_ids:
+                raise Exception("layer already on map: %r" % layer)
+        self.layers = tuple([lr for lr in self.layers] + layers)
+
     def remove_layer(self, layer):
         """Remove layer from map."""
         if layer.model_id not in self._layer_ids:
             raise Exception("layer not on map: %r" % layer)
         self.layers = tuple([l for l in self.layers if l.model_id != layer.model_id])
+
+    def remove_layers(self, layers):
+        """Remove layers from map."""
+        for layer in layers:
+            if layer.model_id not in self._layer_ids:
+                raise Exception("layer not on map: %r" % layer)
+
+        remove_layer_ids = set([lr.model_id for lr in layers])
+        self.layers = tuple(
+            [lyr for lyr in self.layers if lyr.model_id not in remove_layer_ids]
+        )
 
     _object_ids = List()
 
