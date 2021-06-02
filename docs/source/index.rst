@@ -107,6 +107,7 @@ For full list of functionalities please see below sections.
    api_reference/control/zoom
    api_reference/control/zoomrectangle
    api_reference/control/widgetcontrol
+   api_reference/control/layerscontrol
 
 
 .. toctree::
