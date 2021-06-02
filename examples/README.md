@@ -37,7 +37,8 @@ Before you run the Notebooks make sure you have:
 - [Rectangle](./rectangle.ipynb) - Display rectangle object on a map.
 - [Search control](./search_control.ipynb) - Search Addresses using serch control on the map.
 - [Split map control](./splitmap_control.ipynb) - Visualise two layers at the same time on the map using split map control.
-- [ImageTileProvider](./image_tile_layer.ipynb) - Visualise data from XYZ or WMTS tile servers. 
+- [ImageTileProvider](./image_tile_layer.ipynb) - Visualise data from XYZ or WMTS tile servers.
+- [LayersControl](./layers_control.ipynb) - Show/hide  layers using LayersControl.
 
 
 
