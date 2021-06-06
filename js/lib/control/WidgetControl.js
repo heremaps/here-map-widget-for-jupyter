@@ -9,26 +9,31 @@ const PMessaging = require('@phosphor/messaging');
 const PWidgets = require('@phosphor/widgets');
 
 class WidgetControl extends H.ui.Control {
-  constructor(sub_widget, opts) {
+  constructor(opts) {
     super();
-    this._sub_widget = sub_widget;
     this.transparentBg = opts.transparentBg;
   }
 
   renderInternal(el, doc) {
-    if ( this.transparentBg ) {
-      el.appendChild(this._sub_widget);
-    } else {
+    this.em = el;
+    if ( !this.transparentBg ) {
       this.div = doc.createElement('div');
       this.div.className = 'H_ctl H_el H_grp';
-      this.div.appendChild(this._sub_widget);
-      el.appendChild(this.div);
     }
     super.renderInternal(el, doc);
   }
 
+  setContent(ele) {
+    if ( this.transparentBg ) {
+      this.em.appendChild(ele);
+    } else {
+      this.div.appendChild(ele);
+      this.em.appendChild(this.div);
+    }
+  }
+
   updateLayout(options) {
-    if (!this._container) {
+    if (!this.div) {
       return;
     }
     Object.keys(options).forEach(option => {
@@ -40,7 +45,6 @@ class WidgetControl extends H.ui.Control {
 export class WidgetControlModel extends control.ControlModel {
   defaults() {
     return {
-      //      ...super.defaults(),
       _view_name: 'WidgetControlView',
       _model_name: 'WidgetControlModel',
 
@@ -67,15 +71,30 @@ export class WidgetControlView extends control.ControlView {
     if (widget_model) {
       return this.create_child_view(widget_model).then(view => {
         this.widget_view = view;
-        let options = {transparentBg: this.model.get('transparent_bg')};
-        this.obj = new WidgetControl(view.el, options);
-        this.obj.setAlignment(_.get(H.ui.LayoutAlignment, this.model.get('alignment')));
+        // Trigger the displayed event of the child view.
+        this.displayed.then(() => {
+          this.widget_view.trigger('displayed', this);
+          this.widget_view.displayed.then(() => {
+            PMessaging.MessageLoop.sendMessage(
+              view.pWidget,
+              PWidgets.Widget.Msg.BeforeAttach
+            );
+            this.obj.setContent(view.el);
+            PMessaging.MessageLoop.sendMessage(
+              view.pWidget,
+              PWidgets.Widget.Msg.AfterAttach
+            );
+          });
+        });
       });
     }
   }
 
   create_obj() {
-    return this.set_widget(this.model.get('widget'));
+    let options = {transparentBg: this.model.get('transparent_bg')};
+    this.obj = new WidgetControl(options);
+    this.obj.setAlignment(_.get(H.ui.LayoutAlignment, this.model.get('alignment')));
+    this.set_widget(this.model.get('widget'));
   }
 
   model_events() {
