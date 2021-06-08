@@ -351,11 +351,8 @@ class GeoJSON(Layer):
     _hover_callbacks = Instance(CallbackDispatcher, ())
 
     def __init__(self, **kwargs):
-        self.updating = True
         super(GeoJSON, self).__init__(**kwargs)
         self.on_msg(self._handle_m_msg)
-        self.data = self._get_data()
-        self.updating = False
 
     def _handle_m_msg(self, _, content, buffers):
         if content.get("event", "") == "tap":
@@ -383,12 +380,7 @@ class GeoJSON(Layer):
 
     @observe("data", "style", "style_callback")
     def _update_data(self, change):
-        if self.updating:
-            return
-
-        self.updating = True
         self.data = self._get_data()
-        self.updating = False
 
     def _get_data(self):
         if "type" not in self.data:
@@ -406,26 +398,20 @@ class GeoJSON(Layer):
             # No style to apply
             return self.data
 
-        # We need to make a deep copy for ipywidgets to see the change
-        data = copy.deepcopy(self.data)
-
         if datatype == "Feature":
-            self._apply_style(data, style_callback)
+            self._apply_style(self.data, style_callback)
         elif datatype == "FeatureCollection":
-            for feature in data["features"]:
+            for feature in self.data["features"]:
                 self._apply_style(feature, style_callback)
 
-        return data
+        return self.data
 
     def _apply_style(self, feature, style_callback):
         if "properties" not in feature:
             feature["properties"] = {}
-
         properties = feature["properties"]
         if "style" in properties:
-            style = properties["style"].copy()
-            style.update(style_callback(feature))
-            properties["style"] = style
+            properties["style"].update(style_callback(feature))
         else:
             properties["style"] = style_callback(feature)
 
