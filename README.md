@@ -97,7 +97,7 @@ Note for developers:
 
 For developing with JupyterLab:
 
-    $ jupyter labextension develop here_map_widget
+    $ jupyter labextension develop --overwrite here_map_widget
 
 
 ## Documentation

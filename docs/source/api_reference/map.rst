@@ -45,6 +45,7 @@ objects                list of objects    The list of objects that are currently
 controls               list of objects    The list of controls that are currently on the map
 bubbles                list of objects    The list of bubbles that are currently on the map
 style                  Style object       Style to apply for basemap
+bounds                 tuple              Bounding box coordinates South, West, North, East
 ===================    =================  ===
 
 Methods

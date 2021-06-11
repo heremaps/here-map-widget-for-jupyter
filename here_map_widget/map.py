@@ -1924,6 +1924,7 @@ class Map(DOMWidget, InteractMixin):
     heading = Float(180).tag(sync=True, o=True)
     incline = Float(0).tag(sync=True, o=True)
     tilt = Float(0).tag(sync=True, o=True)
+    bounds = Tuple().tag(sync=True, o=True)
 
     layers = Tuple().tag(trait=Instance(Layer), sync=True, **widget_serialization)
     objects = Tuple().tag(trait=Instance(Object), sync=True, **widget_serialization)
