@@ -3,9 +3,7 @@
 
 """Project setup file."""
 
-import json
 import os
-from distutils import log
 
 from jupyter_packaging import (
     combine_commands,
@@ -18,12 +16,6 @@ from jupyter_packaging import (
 from setuptools import find_packages, setup
 
 here = os.path.dirname(os.path.abspath(__file__))
-
-
-log.set_verbosity(log.DEBUG)
-log.info("setup.py entered")
-log.info("$PATH=%s" % os.environ["PATH"])
-
 
 name = "here_map_widget"
 
