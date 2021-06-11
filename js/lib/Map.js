@@ -29,6 +29,7 @@ export class MapModel extends widgets.DOMWidgetModel {
       controls: [],
       basemap: null,
       style: null,
+      bounds: [],
     };
   }
 }
@@ -215,13 +216,18 @@ export class MapView extends widgets.DOMWidgetView {
         zoom: this.model.get('zoom'),
         pixelRatio: pixelRatio
       });
-    // add tilt, incline, heading
-    map.getViewModel().setLookAtData({
+    // add tilt, incline, heading, bounds
+    let inpBounds = this.model.get('bounds');
+    let ViewModelOptions = {
       heading: this.model.get('heading'),
       tilt: this.model.get('tilt'),
       incline: this.model.get('incline')
-    });
-
+    };
+    if (typeof inpBounds !== 'undefined' && inpBounds.length == 4) {
+      let bounds = new H.geo.Rect(inpBounds[1], inpBounds[3], inpBounds[0], inpBounds[2]);
+      ViewModelOptions['bounds'] = bounds;
+    }
+    map.getViewModel().setLookAtData(ViewModelOptions);
     // add a resize listener to make sure that the map occupies the whole container
     window.addEventListener('resize', () => map.getViewPort().resize());
 
@@ -424,6 +430,18 @@ export class MapView extends widgets.DOMWidgetView {
         this.create_child_view(this.model.get('basemap')).then((view) => {
           this.obj.setBaseLayer(view.obj)
         });
+      },
+      this
+    );
+    this.listenTo(
+      this.model,
+      'change:bounds',
+      function() {
+        let cbounds = this.model.get('bounds');
+        if (typeof cbounds !== 'undefined' && cbounds.length == 4) {
+          let bounds = new H.geo.Rect(cbounds[1], cbounds[3], cbounds[0], cbounds[2]);
+          this.obj.getViewModel().setLookAtData({bounds: bounds});
+        }
       },
       this
     );
