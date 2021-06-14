@@ -39,6 +39,7 @@ Before you run the Notebooks make sure you have:
 - [Split map control](./splitmap_control.ipynb) - Visualise two layers at the same time on the map using split map control.
 - [ImageTileProvider](./image_tile_layer.ipynb) - Visualise data from XYZ or WMTS tile servers.
 - [LayersControl](./layers_control.ipynb) - Show/hide  layers using LayersControl.
+- [GeoJSON point style](./geojson_point_style.ipynb) - Point style for Markers in GoeJSON layer.
 
 
 
