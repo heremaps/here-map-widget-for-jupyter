@@ -343,6 +343,7 @@ class GeoJSON(Layer):
     disable_legacy_mode = Bool(True).tag(sync=True)
     style = Dict().tag(sync=True)
     hover_style = Dict().tag(sync=True)
+    point_style = Dict().tag(sync=True)
     evt_type = Unicode("tap").tag(sync=True)
     show_bubble = Bool(False).tag(sync=True)
     style_callback = Any()

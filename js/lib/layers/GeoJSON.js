@@ -20,19 +20,53 @@ export class GeoJSONLayerModel extends layer.LayerModel {
       evt_type: 'tap',
       hover_style: {},
       show_bubble: false,
+      point_style: {}
     };
   }
 }
 
 export class GeoJSONLayerView extends layer.LayerView {
+  create_icon(iconStyle) {
+    var defaultStyle = {
+      strokeColor: 'white',
+      lineWidth: 1,
+      fillColor: "#1b468d",
+      fillOpacity: 0.7,
+      radius: 8
+    },
+      mergeStyle = Object.assign({}, defaultStyle, iconStyle),
+      svgMarkup = '<svg width="18" height="18" ' +
+      'xmlns="http://www.w3.org/2000/svg">' +
+      '<circle cx="8" cy="8" r="radius" '.replace('radius', mergeStyle.radius).replace() +
+      'fill="fillColor" '.replace('fillColor', mergeStyle.fillColor) +
+      'stroke="strokeColor" '.replace('strokeColor', mergeStyle.strokeColor) +
+      'stroke-width="lineWidth" '.replace('lineWidth', mergeStyle.lineWidth) +
+      'fill-opacity="fillOpacity"/> '.replace('fillOpacity', mergeStyle.fillOpacity) +
+      '</svg>',
+      dotIcon = new H.map.Icon(svgMarkup, {
+        anchor: {
+          x: 8,
+          y: 8
+        }
+      });
+    return dotIcon
+  }
   create_obj() {
     this.bubble = null;
+    var pointStyle = this.model.get('point_style');
+    if (Object.keys(pointStyle).length != 0) {
+      var dotIcon = this.create_icon(pointStyle);
+    }
     var style = feature => {
       const model_style = this.model.get('style');
       const feature_style = feature.data.style || {};
-      var s = Object.assign({}, model_style, feature_style);
-      if (typeof feature.setStyle !== "undefined") {
-        feature.setStyle(s);
+      if (Object.keys(pointStyle).length != 0 && feature instanceof H.map.Marker) {
+        feature.setIcon(dotIcon);
+      } else {
+        var s = Object.assign({}, model_style, feature_style);
+        if (typeof feature.setStyle !== "undefined") {
+          feature.setStyle(s);
+        }
       }
     }
     const options = {

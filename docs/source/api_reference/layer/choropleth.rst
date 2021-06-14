@@ -72,4 +72,5 @@ hover_style            dict                      The style to use for rendering 
 evt_type               string                    Event type to be used to apply hover_style, please check :ref:`allowed values <misc_values>`, default value is ``tap``.
 show_bubble            boolean                   To determine whether to show info bubble for space data or not
 style_callback         Callable object           A callback function which is called for each feature to generate style for the feature
+point_style            dict                      The style to use for rendering Points in GeoJSON if not provided default Markers will be used.  please check possible values for styles `here <https://developer.here.com/documentation/maps/3.1.19.2/dev_guide/topics/geo-shapes.html#styling-geo-shapes>`_
 ===================    ========================  ===
