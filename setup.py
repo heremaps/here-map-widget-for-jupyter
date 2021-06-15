@@ -30,7 +30,7 @@ jstargets = [
 ]
 
 data_files_spec = [
-    ("share/jupyter/nbextensions/map-widget-for-jupyter", "here_map_widget/nbextension", "*.*"),
+    ("share/jupyter/nbextensions/@here/map-widget-for-jupyter", "here_map_widget/nbextension", "*.*"),
     (
         "share/jupyter/labextensions/@here/map-widget-for-jupyter",
         "here_map_widget/labextension",

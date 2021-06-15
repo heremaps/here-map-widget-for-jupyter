@@ -12,8 +12,8 @@ export class ElementModel extends widgets.WidgetModel {
       //      ...super.defaults(),
       _view_name: 'ElementView',
       _model_name: 'ElementModel',
-      _view_module: 'map-widget-for-jupyter',
-      _model_module: 'map-widget-for-jupyter',
+      _view_module: '@here/map-widget-for-jupyter',
+      _model_module: '@here/map-widget-for-jupyter',
     };
   }
 }

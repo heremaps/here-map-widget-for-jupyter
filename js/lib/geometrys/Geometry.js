@@ -12,8 +12,8 @@ export class GeometryModel extends widgets.WidgetModel {
       //      ...super.defaults(),
       _view_name: 'GeometryView',
       _model_name: 'GeometryModel',
-      _view_module: 'map-widget-for-jupyter',
-      _model_module: 'map-widget-for-jupyter',
+      _view_module: '@here/map-widget-for-jupyter',
+      _model_module: '@here/map-widget-for-jupyter',
     };
   }
 }

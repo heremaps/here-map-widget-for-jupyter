@@ -1,5 +1,5 @@
 {
   "load_extensions": {
-    "map-widget-for-jupyter/extension": true
+    "@here/map-widget-for-jupyter/extension": true
   }
 }

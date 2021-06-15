@@ -7,11 +7,11 @@ var plugin = require('./index');
 var base = require('@jupyter-widgets/base');
 
 module.exports = {
-  id: 'map-widget-for-jupyter',
+  id: '@here/map-widget-for-jupyter',
   requires: [base.IJupyterWidgetRegistry],
   activate: function(app, widgets) {
       widgets.registerWidget({
-          name: 'map-widget-for-jupyter',
+          name: '@here/map-widget-for-jupyter',
           version: plugin.version,
           exports: plugin
       });

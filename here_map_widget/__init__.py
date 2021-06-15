@@ -33,11 +33,11 @@ def _jupyter_nbextension_paths():
         {
             "section": "notebook",
             "src": "nbextension",
-            "dest": "map-widget-for-jupyter",
-            "require": "map-widget-for-jupyter/extension",
+            "dest": "@here/map-widget-for-jupyter",
+            "require": "@here/map-widget-for-jupyter/extension",
         }
     ]
 
 
 def _jupyter_labextension_paths():
-    return [{"src": "labextension", "dest": "map-widget-for-jupyter"}]
+    return [{"src": "labextension", "dest": "@here/map-widget-for-jupyter"}]

@@ -114,6 +114,9 @@ module.exports = [
             rules: rules
         },
         externals: ['@jupyter-widgets/base'],
-        resolve: resolve
+        resolve: resolve,
+        node: {
+               global: false
+        }
     }
 ];
