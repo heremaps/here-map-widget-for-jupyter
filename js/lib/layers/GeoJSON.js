@@ -32,7 +32,7 @@ export class GeoJSONLayerView extends layer.LayerView {
       lineWidth: 1,
       fillColor: "#1b468d",
       fillOpacity: 0.7,
-      radius: 8
+      radius: 5
     },
       mergeStyle = Object.assign({}, defaultStyle, iconStyle),
       svgMarkup = '<svg width="18" height="18" ' +
