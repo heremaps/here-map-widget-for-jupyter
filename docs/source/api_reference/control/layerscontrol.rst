@@ -29,6 +29,7 @@ Example
     m.add_layers([countries, us_states])
     lc = LayersControl(alignment="RIGHT_TOP")
     m.add_control(lc)
+    m
 
 
 

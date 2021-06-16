@@ -9,9 +9,9 @@ Example
 
 .. jupyter-execute::
 
+    import os
     from here_map_widget import Map, OMV, Platform, Style, TileLayer
     from here_map_widget import ServiceNames, OMVUrl
-    import os
 
     services_config = {
         ServiceNames.omv: {
@@ -24,20 +24,16 @@ Example
     platform = Platform(api_key=os.environ["LS_API_KEY"], services_config=services_config)
 
     style = Style(
-        config="http://js.api.here.com/v3/3.1/styles/omv/oslo/japan/normal.day.yaml",
-        base_url="http://js.api.here.com/v3/3.1/styles/omv/oslo/japan/",
+        config="https://js.api.here.com/v3/3.1/styles/omv/oslo/japan/normal.day.yaml",
+        base_url="https://js.api.here.com/v3/3.1/styles/omv/oslo/japan/",
     )
 
-    omv_provider = OMV(path="/v2/vectortiles/core/mc", platform=platform, style=style)
+    omv_provider = OMV(path="v2/vectortiles/core/mc", platform=platform, style=style)
 
     omv_layer = TileLayer(provider=omv_provider, style={"max": 22})
 
-    m = Map(
-        api_key=os.environ["LS_API_KEY"],
-        center=[35.68026, 139.76744],
-        zoom=8,
-        basemap=omv_layer,
-    )
+    center = [35.68026, 139.76744]
+    m = Map(api_key=os.environ["LS_API_KEY"], center=center, zoom=8, basemap=omv_layer)
     m
 
 Attributes
