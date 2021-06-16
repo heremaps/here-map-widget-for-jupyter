@@ -12,8 +12,8 @@ export class ObjectModel extends widgets.WidgetModel {
       //      ...super.defaults(),
       _view_name: 'ObjectView',
       _model_name: 'ObjectModel',
-      _view_module: 'map-widget-for-jupyter',
-      _model_module: 'map-widget-for-jupyter',
+      _view_module: '@here/map-widget-for-jupyter',
+      _model_module: '@here/map-widget-for-jupyter',
       extrusion: 0,
       elevation: 0,
     };

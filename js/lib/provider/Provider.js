@@ -12,8 +12,8 @@ export class ProviderModel extends widgets.WidgetModel {
       //      ...super.defaults(),
       _view_name: 'ProviderView',
       _model_name: 'ProviderModel',
-      _view_module: 'map-widget-for-jupyter',
-      _model_module: 'map-widget-for-jupyter',
+      _view_module: '@here/map-widget-for-jupyter',
+      _model_module: '@here/map-widget-for-jupyter',
     };
   }
 }

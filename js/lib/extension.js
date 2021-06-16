@@ -10,7 +10,7 @@
 // Some static assets may be required by the custom widget javascript. The base
 // url for the notebook is not known at build time and is therefore computed
 // dynamically.
-__webpack_public_path__ = document.querySelector('body').getAttribute('data-base-url') + 'nbextensions/map-widget-for-jupyter';
+__webpack_public_path__ = document.querySelector('body').getAttribute('data-base-url') + 'nbextensions/@here/map-widget-for-jupyter';
 
 
 // Configure requirejs
@@ -18,7 +18,7 @@ if (window.require) {
     window.require.config({
         map: {
             "*" : {
-                "map-widget-for-jupyter": "nbextensions/map-widget-for-jupyter/index",
+                "@here/map-widget-for-jupyter": "nbextensions/@here/map-widget-for-jupyter/index",
             }
         }
     });

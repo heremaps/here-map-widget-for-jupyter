@@ -42,9 +42,9 @@ jobs:
 
     - name: Check installation files
       run: |
-        test -d $CONDA_PREFIX/share/jupyter/nbextensions/map-widget-for-jupyter
-        test -f $CONDA_PREFIX/share/jupyter/nbextensions/map-widget-for-jupyter/extension.js
-        test -f $CONDA_PREFIX/share/jupyter/nbextensions/map-widget-for-jupyter/index.js
+        test -d $CONDA_PREFIX/share/jupyter/nbextensions/@here/map-widget-for-jupyter
+        test -f $CONDA_PREFIX/share/jupyter/nbextensions/@here/map-widget-for-jupyter/extension.js
+        test -f $CONDA_PREFIX/share/jupyter/nbextensions/@here/map-widget-for-jupyter/index.js
         test -d $CONDA_PREFIX/share/jupyter/labextensions/@here/map-widget-for-jupyter
         test -f $CONDA_PREFIX/share/jupyter/labextensions/@here/map-widget-for-jupyter/package.json
 
