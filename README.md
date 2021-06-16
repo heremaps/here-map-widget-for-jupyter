@@ -104,6 +104,10 @@ For developing with JupyterLab:
 
 Documentation is available [here](https://here-map-widget-for-jupyter.readthedocs.io/en/latest/)
 
+## Related projects
+Below projects use `here-map-widget-for-jupyter` as plotting backend
+- [leafmap](https://github.com/giswqs/leafmap)
+
 ## License
 
 Copyright (C) 2019-2021 HERE Europe B.V.

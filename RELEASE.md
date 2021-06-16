@@ -1,26 +1,27 @@
 # Release Instructions
+This document describes the release process of here-map-widget-for-jupyter, and is mostly intended for package maintainers.
 
-To release a new version of HERE Map Widget for Jupyter to PyPI follow the steps below:
+## Preparation
 
-1. Set release version and remove 'dev' in `here_map_widget/_version.py`.
-2. Create a commit e.g. run `git add the _version.py` and `git commit`, do not do a git push.
-3. Run `python setup.py sdist upload`
-4. Run `python setup.py bdist_wheel upload`
-5. Run `git tag -a X.X.X -m 'comment'`
-6. Increment the minor version number and add 'dev' in `here_map_widget/_version.py`
-7. Create a commit e.g. run `git add` and `git commit`
-8. Push all commits via `git push`
-9. Push all tag via `git push --tags`
+The following are mandatory pre-release steps to bring the repository into a proper shape:
 
-## Publishing to npmjs.com
+- Update version in [here_map_widget/_version.py](here_map_widget/_version.py) as desired.
+- Update [js/package.json](js/package.json) with new npm package version.  
+- Make sure all tests listed in `CONTRIBUTING.md` pass successfully.
+- Make sure badges appear as expected in the [README.md on GitHub](https://github.com/heremaps/here-map-widget-for-jupyter/blob/master/README.md).
 
-To release a new version of @here/map-widget-for-jupyter to npmjs.com
+## Release on PyPI
 
-1. Update `js/package.json` with new npm package version
-2. Clean the `dist` and `node_modules` directories by running the below:
+- Create a new release in the GitHub UI by clicking on [Draft a new release](https://github.com/heremaps/here-map-widget-for-jupyter/releases/new) button, then update the tag version and release description.
+- Click on the `Publish release` button to release the [package on PyPI](https://pypi.org/project/here-map-widget-for-jupyter/).
+- Once released verify that `pip install here-map-widget-for-jupyter` does indeed install the latest release.
 
-```
-git clean -fdx
-npm install
-npm publish
-```
+  
+## Release on Anaconda's conda-forge channel
+
+- Go to the [here-map-widget-for-jupyter-feedstock](https://github.com/conda-forge/here-map-widget-for-jupyter-feedstock) repository.
+- Create a new release branch and update `version`, `url`, `sha256` hash of the released tar and dependencies in [meta.yml](https://github.com/conda-forge/here-map-widget-for-jupyter-feedstock/blob/master/recipe/meta.yaml)
+- Verify `requirements` in [meta.yml](https://github.com/conda-forge/here-map-widget-for-jupyter-feedstock/blob/master/recipe/meta.yaml)
+- Raise a PR for this release branch and merge the changes in master.
+- It can take hours for a new release to [appear on Anaconda.org](https://anaconda.org/conda-forge/here-map-widget-for-jupyter).
+- Once available verify that `conda install -c conda-forge here-map-widget-for-jupyter` does indeed install the latest release.
