@@ -43,6 +43,7 @@ For full list of functionalities please see below sections.
    api_reference/basemap/raster
    api_reference/basemap/vector
    api_reference/basemap/map_tile
+   api_reference/basemap/external_basemap
 
 .. toctree::
    :caption: Layers
