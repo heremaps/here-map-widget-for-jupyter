@@ -1987,13 +1987,16 @@ class Map(DOMWidget, InteractMixin):
                 self.basemap["apiKey"] = self.api_key
             self.basemap = basemap_to_tiles(self.basemap)
 
-    @observe('zoom_control')
+    @observe("zoom_control")
     def observe_zoom_control(self, change):
-        if change['new']:
+        if change["new"]:
             self.zoom_control_instance = ZoomControl(alignment="LEFT_TOP")
             self.add_control(self.zoom_control_instance)
         else:
-            if self.zoom_control_instance is not None and self.zoom_control_instance in self.controls:
+            if (
+                self.zoom_control_instance is not None
+                and self.zoom_control_instance in self.controls
+            ):
                 self.remove_control(self.zoom_control_instance)
 
     @validate("layers")
