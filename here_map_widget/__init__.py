@@ -7,6 +7,8 @@ This widget enables you to use the HERE Map View in Jupyter Notebook
 to make analysis ofgeospatial data easier and more interactive.
 """
 
+import xyzservices.providers as basemaps  # noqa E501
+
 from ._version import __version__, version_info
 from .configs import *
 from .map import *
