@@ -8,6 +8,7 @@ This is the main script which contains all the python side model.
 import copy
 import json
 
+import xyzservices
 from branca.colormap import ColorMap, linear
 from ipywidgets import (
     Box,
@@ -40,6 +41,29 @@ from ._version import EXTENSION_VERSION
 from .configs import DefaultLayerNames
 
 def_loc = [20.5937, 78.9629]
+
+
+def basemap_to_tiles(basemap, opacity=1, **kwargs):
+    """Turn a basemap into a TileLayer object.
+
+    Parameters
+    ----------
+    basemap : class:`xyzservices.lib.TileProvider`
+        Basemap description coming from here_map_widget.basemaps.
+    opacity: Int, Optional
+        Opacity of the TileLayer, default 1.
+    kwargs: key-word arguments
+        Extra key-word arguments to pass to the ``basemap.build_url`` method.
+    """
+    url = basemap.build_url(**kwargs)
+    provider = ImageTileProvider(
+        url=url,
+        max_zoom=basemap.get("max_zoom", 19),
+        min_zoom=basemap.get("min_zoom", 1),
+        attribution=basemap.get("html_attribution", ""),
+        opacity=opacity,
+    )
+    return TileLayer(provider=provider, name=basemap.get("name", ""))
 
 
 class InteractMixin(object):
@@ -1936,16 +1960,44 @@ class Map(DOMWidget, InteractMixin):
     )
     basemap = Union(
         (
-            Instance(DefaultLayers, default_value=None, allow_none=True),
-            Instance(TileLayer, default_value=None, allow_none=True),
-            Instance(MapTile, default_value=None, allow_none=True),
-        )
+            Instance(DefaultLayers),
+            Instance(TileLayer),
+            Instance(MapTile),
+            Instance(xyzservices.lib.TileProvider),
+        ),
+        default_value=DefaultLayers(layer_name=DefaultLayerNames.vector.normal.map),
     ).tag(sync=True, **widget_serialization)
+
+    zoom_control = Bool(True)
 
     _view_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
     _model_module_version = Unicode(EXTENSION_VERSION).tag(sync=True)
 
     _layer_ids = List()
+
+    def __init__(self, api_key, **kwargs):
+        self.zoom_control_instance = None
+        self.api_key = api_key
+        super().__init__(**kwargs)
+        if self.zoom_control:
+            self.zoom_control_instance = ZoomControl(alignment="LEFT_TOP")
+            self.add_control(self.zoom_control_instance)
+        if isinstance(self.basemap, xyzservices.lib.TileProvider):
+            if "HEREv3" in self.basemap.name:
+                self.basemap["apiKey"] = self.api_key
+            self.basemap = basemap_to_tiles(self.basemap)
+
+    @observe("zoom_control")
+    def observe_zoom_control(self, change):
+        if change["new"]:
+            self.zoom_control_instance = ZoomControl(alignment="LEFT_TOP")
+            self.add_control(self.zoom_control_instance)
+        else:
+            if (
+                self.zoom_control_instance is not None
+                and self.zoom_control_instance in self.controls
+            ):
+                self.remove_control(self.zoom_control_instance)
 
     @validate("layers")
     def _validate_layers(self, proposal):

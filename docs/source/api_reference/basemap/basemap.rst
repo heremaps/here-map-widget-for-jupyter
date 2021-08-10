@@ -10,3 +10,4 @@ These are the various basemaps supported by ``here-map-widget-for-jupyter``
    raster
    vector
    map_tile
+   external_basemap
