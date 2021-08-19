@@ -43,6 +43,9 @@ Use [HERE Maps API for JavaScript](https://developer.here.com/develop/javascript
 
 ![Add ipywidgets controls](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/widget-control.gif)
 
+### Selecting external basemaps:
+![Select external basemap](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/images/external_basemaps.gif)
+
 ## Prerequisites
 
 Before you can install this package, or use the example notebooks to make sure your system meets the following prerequisities:
