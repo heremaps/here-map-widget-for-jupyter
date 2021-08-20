@@ -632,7 +632,7 @@ export class SearchControlModel extends control.ControlModel {
       _model_name: 'SearchControlModel',
 
       name: "SearchControl",
-      alignment: "TOP_LEFT",
+      alignment: "LEFT_TOP",
       zoom: 4,
       lang: 'en-US',
       limit: 10,
