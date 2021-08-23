@@ -39,10 +39,10 @@ Attribute              Type               Doc
 geo_data               GeoDataFrame       The GeoPandas dataframe to use
 style                  dict               The style to use for rendering GeoJSON data
 disable_legacy_mode    boolean            Disable legacy mode for parsing GeoJSON data default ``True``.
-style                  dict               The style to use for rendering GeoJSON data, please check possible values for styles `here <https://developer.here.com/documentation/maps/3.1.19.2/dev_guide/topics/geo-shapes.html#styling-geo-shapes>`_
-hover_style            dict               The style to use for rendering data when hovered over
+style                  dict               The style to use for rendering GeoJSON data. Example: {'fillColor': 'rgba(245, 176, 65, 0.5)', 'strokeColor': 'black', 'lineWidth': 10, 'lineCap': 'square', lineJoin: 'bevel'}
+hover_style            dict               The style to use for rendering data when hovered over. Example: {'fillColor': 'rgba(245, 176, 65, 0.5)', 'strokeColor': 'black', 'lineWidth': 10}
 evt_type               string             Event type to be used to apply hover_style, please check :ref:`allowed values <misc_values>`, default value is ``tap``.
 show_bubble            boolean            To determine whether to show info bubble for space data or not
 style_callback         Callable object    A callback function which is called for each feature to generate style for the feature
-point_style            dict               The style to use for rendering Points in GeoJSON if not provided default Markers will be used.  please check possible values for styles `here <https://developer.here.com/documentation/maps/3.1.19.2/dev_guide/topics/geo-shapes.html#styling-geo-shapes>`_
+point_style            dict               The style to use for rendering Points in GeoJSON if not provided default Markers will be used. Example: {"strokeColor": 'white', "lineWidth": 1, "fillColor": "#1b468d", "fillOpacity": 0.7, "radius": 5}, radius should be between 2 to 8.
 ===================    =================  ===
