@@ -1,6 +1,29 @@
 CHANGELOG
 =========
 
+
+here-map-widget-for-jupyter 1.1.2 (2021-08-19)
+----------------------------------------------
+
+- Added support for external basemaps using `xyzservices <https://github.com/geopandas/xyzservices>`_.
+- Removed support for python3.6 due to `xyzservices <https://github.com/geopandas/xyzservices>`_.
+
+here-map-widget-for-jupyter 1.1.1 (2021-06-16)
+----------------------------------------------
+
+- Added bounds trait to map object
+- Added point_style for GeoJSON layer
+- Fixed JS bundle load issue for unpkg.com
+
+here-map-widget-for-jupyter 1.1.0 (2021-06-09)
+----------------------------------------------
+
+- Added transparent_bg parameter in WidgetControl
+- Added dedicated LayersControl to toggle layers on the map.
+- Fix layout issue of ipywidgets
+- Fix basemap trait for Map object
+- Fix MapSettingsControl dynamic update
+
 here-map-widget-for-jupyter 1.0.1 (2021-03-31)
 ----------------------------------------------
 

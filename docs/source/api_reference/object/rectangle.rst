@@ -2,7 +2,7 @@ Rectangle Object
 ================
 
 ``Rectangle`` is an ``here-map-widget-for-jupyter`` class that allows you to visualize a Bounding Box as Rectangle on the Map.
-Style of object is a dictionary, to get more information on all possible keys of style dictionary, please check this `link <https://developer.here.com/documentation/maps/3.1.20.0/dev_guide/topics/geo-shapes.html>`_.
+Style of object is a dictionary, to get more information on all possible keys of style dictionary, example: {'fillColor': 'rgba(245, 176, 65, 0.5)', 'strokeColor': 'black', 'lineWidth': 10, 'lineCap': 'square', lineJoin: 'bevel'}.
 
 Example
 -------
