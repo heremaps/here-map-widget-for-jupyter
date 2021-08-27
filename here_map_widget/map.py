@@ -60,7 +60,7 @@ def basemap_to_tiles(basemap, opacity=1, **kwargs):
         url=url,
         max_zoom=basemap.get("max_zoom", 19),
         min_zoom=basemap.get("min_zoom", 1),
-        attribution=basemap.get("html_attribution", ""),
+        attribution=basemap.get("html_attribution", "") or basemap.get("attribution", ""),
         opacity=opacity,
     )
     return TileLayer(provider=provider, name=basemap.get("name", ""))
@@ -1622,7 +1622,7 @@ class SearchControl(Control):
     _model_name = Unicode("SearchControlModel").tag(sync=True)
 
     name = Unicode("SearchControl").tag(sync=True)
-    alignment = Unicode("TOP_LEFT").tag(sync=True)
+    alignment = Unicode("LEFT_TOP").tag(sync=True)
     zoom = Float(4).tag(sync=True)
     property_name = Unicode("name").tag(sync=True)
     lang = Unicode(default_value="en-US").tag(sync=True)
