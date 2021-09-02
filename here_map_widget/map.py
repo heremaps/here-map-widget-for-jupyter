@@ -545,7 +545,13 @@ class Choropleth(GeoJSON):
     key_on = Unicode("id")
 
     @observe(
-        "style", "style_callback", "value_min", "value_max", "geo_data", "choro_data", "colormap",
+        "style",
+        "style_callback",
+        "value_min",
+        "value_max",
+        "geo_data",
+        "choro_data",
+        "colormap",
     )
     def _update_data(self, change):
         self.data = self._get_data()
@@ -558,7 +564,9 @@ class Choropleth(GeoJSON):
     def _default_style_callback(self):
         def compute_style(feature, colormap, choro_data):
             return dict(
-                fillColor=colormap.rgb_hex_str(choro_data), strokeColor="black", weight=0.9,
+                fillColor=colormap.rgb_hex_str(choro_data),
+                strokeColor="black",
+                weight=0.9,
             )
 
         return compute_style
@@ -1029,7 +1037,12 @@ class Polygon(Object):
     _model_name = Unicode("PolygonModel").tag(sync=True)
 
     object = Union(
-        (Instance(LineString), Instance(WKT), Instance(GeoPolygon), Instance(GeoMultiPolygon),)
+        (
+            Instance(LineString),
+            Instance(WKT),
+            Instance(GeoPolygon),
+            Instance(GeoMultiPolygon),
+        )
     ).tag(sync=True, **widget_serialization)
     style = Dict().tag(sync=True)
     draggable = Bool(False).tag(sync=True)
@@ -1870,9 +1883,9 @@ class MarkerCluster(Provider):
 
 class ImageTileProvider(Provider):
     """ImageTileProvider class.
-    
+
     Provider for loading data from XYZ tile setvers and WMTS sources.
-    
+
     Attributes
     ----------
     url: string
@@ -1882,10 +1895,10 @@ class ImageTileProvider(Provider):
     max_zoom: Int, default 22
         The maximum supported zoom level.
     opacity: float default 1.0
-        The opacity to use for the rendering of the provided tiles in range [0..1] where 0.0 means full 
+        The opacity to use for the rendering of the provided tiles in range [0..1] where 0.0 means full
         transparent and 1.0 means full opaque.
     tile_size: Int, default 256
-        The size of a tile as edge length in pixels. 
+        The size of a tile as edge length in pixels.
         It must be 2^n where n is in the range [0 ... 30].
     headers: Dict
         A dictionaary of headers to be sent with each request made by the provider.
