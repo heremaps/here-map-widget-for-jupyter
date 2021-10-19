@@ -7,11 +7,21 @@ This widget enables you to use the HERE Map View in Jupyter Notebook
 to make analysis ofgeospatial data easier and more interactive.
 """
 
+import sys
+
 import xyzservices.providers as basemaps  # noqa E501
 
 from ._version import __version__, version_info
 from .configs import *
 from .map import *
+
+try:
+    if "google.colab" in sys.modules:
+        from google.colab import output
+
+        output.enable_custom_widget_manager()
+except ImportError:
+    pass
 
 
 def _jupyter_nbextension_paths():
