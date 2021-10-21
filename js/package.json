@@ -29,6 +29,7 @@
     "dist/*.png",
     "lib/**/*.gif",
     "dist/*.gif",
+    "dist/*.map",
     "LICENSE"
   ],
   "scripts": {

@@ -18,6 +18,7 @@ from ipywidgets import (
     interactive,
     widget_serialization,
 )
+from ipywidgets.embed import embed_minimal_html
 from traitlets import (
     Any,
     Bool,
@@ -2175,3 +2176,15 @@ class Map(DOMWidget, InteractMixin):
         elif isinstance(item, InfoBubble):
             self.add_bubble(item)
         return self
+
+    def save(self, outfile, **kwargs):
+        """Save the Map to .html file.
+
+        Parameters
+        ----------
+        outfile: str or file-like object
+            The file to write the HTML output to.
+        kwargs: keyword-arguments
+            Extra parameters to pass to the ipywidgets.embed.embed_minimal_html function.
+        """
+        embed_minimal_html(outfile, views=[self], **kwargs)
