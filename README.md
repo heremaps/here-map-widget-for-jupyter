@@ -110,6 +110,7 @@ Documentation is available [here](https://here-map-widget-for-jupyter.readthedoc
 ## Related projects
 Below projects use `here-map-widget-for-jupyter` as plotting backend
 - [leafmap](https://github.com/giswqs/leafmap)
+- [HERE Inspector](https://developer.here.com/documentation/sdk-python-v2/dev_guide/topics/usage/here-inspector.html) package of [HERE Data SDK for Python v2](https://developer.here.com/documentation/sdk-python-v2/dev_guide/index.html)
 
 ## License
 
