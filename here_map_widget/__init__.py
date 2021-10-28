@@ -2,9 +2,10 @@
 # SPDX-License-Identifier: MIT
 
 """HERE Map Widget for Jupyter - use HERE Maps API for
-JavaScript in your Jupyter Notebook.
-This widget enables you to use the HERE Map View in Jupyter Notebook
-to make analysis ofgeospatial data easier and more interactive.
+
+JavaScript in your Jupyter notebooks.
+This widget enables you to use the HERE Map View in Jupyter notebooks
+to make geospatial data analysis easier and more interactive.
 """
 
 import sys
