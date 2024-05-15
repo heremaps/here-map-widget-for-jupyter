@@ -447,17 +447,17 @@ export class MapView extends widgets.DOMWidgetView {
     );
   }
 
-  processPhosphorMessage(msg) {
-    super.processPhosphorMessage(msg);
+  processLuminoMessage(msg) {
+    super.processLuminoMessage(msg);
     switch (msg.type) {
       case 'resize':
-        console.log('Phosphor resize');
+        console.log('Lumino resize');
         if (this.obj) {
           this.obj.getViewPort().resize();
         }
         break;
       case 'after-show':
-        console.log('Phosphor after-show');
+        console.log('Lumino after-show');
         this.obj.getViewPort().resize();
         break;
     }

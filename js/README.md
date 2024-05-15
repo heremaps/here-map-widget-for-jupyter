@@ -9,7 +9,7 @@ Package Install
 - [node](http://nodejs.org/)
 
 ```bash
-npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/here-node/
+npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript
 
 npm install --save @here/map-widget-for-jupyter
 ```

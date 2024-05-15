@@ -23,5 +23,12 @@
 */
 
 {
-  "plugins": ["transform-object-rest-spread"]
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ],
+  "plugins": ["@babel/plugin-proposal-object-rest-spread"]
 }
