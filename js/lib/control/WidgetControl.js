@@ -5,8 +5,8 @@
 const control = require('./Control.js');
 const widgets = require('@jupyter-widgets/base');
 const _ = require('lodash');
-const PMessaging = require('@phosphor/messaging');
-const PWidgets = require('@phosphor/widgets');
+const LMessaging = require('@lumino/messaging');
+const LWidgets = require('@lumino/widgets');
 
 class WidgetControl extends H.ui.Control {
   constructor(opts) {
@@ -75,14 +75,14 @@ export class WidgetControlView extends control.ControlView {
         this.displayed.then(() => {
           this.widget_view.trigger('displayed', this);
           this.widget_view.displayed.then(() => {
-            PMessaging.MessageLoop.sendMessage(
+            LMessaging.MessageLoop.sendMessage(
               view.pWidget,
-              PWidgets.Widget.Msg.BeforeAttach
+              LWidgets.Widget.Msg.BeforeAttach
             );
             this.obj.setContent(view.el);
-            PMessaging.MessageLoop.sendMessage(
+            LMessaging.MessageLoop.sendMessage(
               view.pWidget,
-              PWidgets.Widget.Msg.AfterAttach
+              LWidgets.Widget.Msg.AfterAttach
             );
           });
         });

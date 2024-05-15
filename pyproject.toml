@@ -1,3 +1,95 @@
 [build-system]
-requires = ["jupyter_packaging>=0.7.9", "jupyterlab>=3.0.0,==3.*", "setuptools>=40.8.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = [
+    "hatchling",
+    "jupyterlab>=3.0.0,==3.*",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "here-map-widget-for-jupyter"
+description = "A widget that enables you to use HERE Maps API for JavaScript in Jupyter Notebook."
+readme = "README.md"
+authors = [
+    { name = "HERE Europe B.V." },
+]
+keywords = [
+    "here-map-widget-for-jupyter",
+    "ipython",
+    "jupyter",
+    "widgets",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: IPython",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "branca>=0.7.2,<0.8",
+    "ipywidgets>=8.1.2,<9",
+    "xyzservices>=2024.4.0",
+]
+version = "1.1.4"
+
+[project.license]
+file = "LICENSE"
+
+[project.optional-dependencies]
+dev = [
+    "black[jupyter]",
+    "isort",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["here_map_widget"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"here_map_widget/nbextension/*.*" = "share/jupyter/nbextensions/@here/map-widget-for-jupyter/*.*"
+"here_map_widget/labextension" = "share/jupyter/labextensions/@here/map-widget-for-jupyter"
+"./map-widget-for-jupyter.json" = "etc/jupyter/nbconfig/notebook.d/map-widget-for-jupyter.json"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    ".github",
+]
+
+[tool.hatch.build.hooks.jupyter-builder]
+ensured-targets = [
+    "here_map_widget/nbextension/index.js",
+    "here_map_widget/labextension/package.json",
+]
+dependencies = [
+    "hatch-jupyter-builder>=0.9.1",
+]
+build-function = "hatch_jupyter_builder.npm_builder"
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+path = "js"
+build_cmd = "build:extensions"
+npm = [
+    "yarn",
+]
+
+[tool.tbump]
+field = [
+    { name = "channel", default = "" },
+    { name = "release", default = "" },
+]
+
+[tool.tbump.version]
+current = "1.1.4"
+regex = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)((?P<channel>a|b|rc|.dev)(?P<release>\\d+))?"
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+version_template = "version = \"{major}.{minor}.{patch}{channel}{release}\""
