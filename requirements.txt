@@ -1,3 +1,4 @@
-ipywidgets>=7.6.0,<8
-branca>=0.3.1,<0.5
-xyzservices>=2021.8.0
+ipywidgets>=8.1.2,<9
+jupyter-packaging>=0.12.2
+branca>=0.7.2,<0.8
+xyzservices>=2024.4.0

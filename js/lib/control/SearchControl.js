@@ -5,8 +5,8 @@
 const control = require('./Control.js');
 const widgets = require('@jupyter-widgets/base');
 const _ = require('lodash');
-const PMessaging = require('@phosphor/messaging');
-const PWidgets = require('@phosphor/widgets');
+const LMessaging = require('@lumino/messaging');
+const LWidgets = require('@lumino/widgets');
 var centroid = require("@turf/centroid");
 var helpers = require("@turf/helpers");
 

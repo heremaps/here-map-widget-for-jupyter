@@ -5,8 +5,8 @@
 const control = require('./Control.js');
 const widgets = require('@jupyter-widgets/base');
 const _ = require('lodash');
-const PMessaging = require('@phosphor/messaging');
-const PWidgets = require('@phosphor/widgets');
+const LMessaging = require('@lumino/messaging');
+const LWidgets = require('@lumino/widgets');
 
 class FullscreenControl extends H.ui.Control {
   constructor(map_view) {
