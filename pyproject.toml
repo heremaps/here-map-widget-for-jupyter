@@ -32,7 +32,7 @@ classifiers = [
 ]
 dependencies = [
     "branca>=0.7.2,<0.8",
-    "ipywidgets>=8.1.2,<9",
+    "ipywidgets>=7.6.0,<9",
     "xyzservices>=2024.4.0",
 ]
 version = "1.1.4"
