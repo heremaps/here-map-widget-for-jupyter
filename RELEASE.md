@@ -5,7 +5,8 @@ This document describes the release process of here-map-widget-for-jupyter, and 
 
 The following are mandatory pre-release steps to bring the repository into a proper shape:
 
-- Update version in [here_map_widget/_version.py](here_map_widget/_version.py) as desired.
+- Update versions in [pyproject.toml](pyproject.toml)
+- Update versions in [here_map_widget/_version.py](here_map_widget/_version.py) as desired.
 - Update [js/package.json](js/package.json) with new npm package version.  
 - Make sure all tests listed in `CONTRIBUTING.md` pass successfully.
 - Make sure badges appear as expected in the [README.md on GitHub](https://github.com/heremaps/here-map-widget-for-jupyter/blob/master/README.md).
