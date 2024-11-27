@@ -1,5 +1,5 @@
 jupyter-sphinx==0.2.4a1
 sphinx_rtd_theme
 pandas
-geopandas
+#geopandas
 here-map-widget-for-jupyter
