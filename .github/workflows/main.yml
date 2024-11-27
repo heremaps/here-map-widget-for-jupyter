@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python-version: [3.12]
+        python-version: [3.9]
 
     steps:
     - uses: actions/checkout@v2
@@ -35,7 +35,7 @@ jobs:
       run: mamba install python=${{ matrix.python-version }} pip nodejs jupyter-packaging
 
     - name: Mamba install JupyterLab 3
-      run: mamba install jupyterlab=3 ipywidgets=7.6
+      run: mamba install jupyterlab=3.5 ipywidgets=7.6
 
     - name: Install here-map-widget-for-jupyter
       run: |
