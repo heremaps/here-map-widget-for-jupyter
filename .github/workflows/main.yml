@@ -34,8 +34,8 @@ jobs:
     - name: Mamba install dependencies
       run: mamba install python=${{ matrix.python-version }} pip nodejs jupyter-packaging
 
-    - name: Mamba install JupyterLab 3.5
-      run: mamba install jupyterlab=3.5 ipywidgets=7.6
+    - name: Mamba install JupyterLab 3
+      run: mamba install jupyterlab=3 ipywidgets=7.6
 
     - name: Install here-map-widget-for-jupyter
       run: |
