@@ -1,4 +1,4 @@
-# Copyright (C) 2019-2021 HERE Europe B.V.
+# Copyright (C) 2019-2024 HERE Europe B.V.
 # SPDX-License-Identifier: MIT
 
 """Project setup file."""
@@ -45,7 +45,8 @@ data_files_spec = [
 
 cmdclass = create_cmdclass("jsdeps", data_files_spec=data_files_spec)
 js_command = combine_commands(
-    install_npm(js_dir, npm=["yarn"], build_cmd="build:extensions"),
+    #install_npm(js_dir, npm=["yarn"], build_cmd="build:extensions"),
+    install_npm(js_dir, npm=["npm"], build_cmd="build:extensions"),
     ensure_targets(jstargets),
 )
 

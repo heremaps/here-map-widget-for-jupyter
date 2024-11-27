@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019-2021 HERE Europe B.V.
+  Copyright (C) 2019-2024 HERE Europe B.V.
   SPDX-License-Identifier: MIT
 */
 const service = require('./Service.js');
@@ -30,12 +30,14 @@ export class DefaultLayersView extends service.ServiceView {
   }
   create_obj() {
     var ppi = this.model.get('ppi') === null ? undefined : this.model.get('ppi');
+    const engineType = H.Map.EngineType['HARP'];
     var platform = new H.service.Platform({
       apikey: this.map_view.model.get('api_key')
     });
     var defaultLayers = platform.createDefaultLayers({
       tileSize: this.model.get('tile_size'),
-      ppi: ppi
+      ppi: ppi,
+      engineType,
     });
     this.obj = _.get(defaultLayers, this.model.get('layer_name'));
   }
