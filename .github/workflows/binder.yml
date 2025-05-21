@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: s-weigand/trigger-mybinder-build@v1
         with:
-          target-repo: heremaps/here-map-widget-for-jupyter
+          target-repo: heremaps/here-map-widget-for-jupyter/HEAD
           service-name: gh
           debug: true
