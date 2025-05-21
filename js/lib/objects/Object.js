@@ -1,9 +1,9 @@
 /*
-  Copyright (C) 2019-2021 HERE Europe B.V.
+  Copyright (C) 2019-2024 HERE Europe B.V.
   SPDX-License-Identifier: MIT
 */
 const widgets = require('@jupyter-widgets/base');
-import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle'
+import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle.harp'
 const _ = require('lodash');
 
 export class ObjectModel extends widgets.WidgetModel {

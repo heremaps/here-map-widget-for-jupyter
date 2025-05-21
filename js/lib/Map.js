@@ -1,10 +1,10 @@
 /*
-  Copyright (C) 2019-2021 HERE Europe B.V.
+  Copyright (C) 2019-2024 HERE Europe B.V.
   SPDX-License-Identifier: MIT
 */
 const widgets = require('@jupyter-widgets/base');
 const _ = require('lodash');
-import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle'
+import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle.harp'
 
 const DEFAULT_LOCATION = [20.5937, 78.9629];
 
@@ -207,12 +207,14 @@ export class MapView extends widgets.DOMWidgetView {
   create_map() {
     //Step 2: initialize a map
     var pixelRatio = window.devicePixelRatio || 1;
+    const engineType = H.Map.EngineType["HARP"];
     var map = new H.Map(this.map_container,
       this.basemap, {
         center: {
           lat: this.model.get('center')[0],
           lng: this.model.get('center')[1]
         },
+        engineType,
         zoom: this.model.get('zoom'),
         pixelRatio: pixelRatio
       });
