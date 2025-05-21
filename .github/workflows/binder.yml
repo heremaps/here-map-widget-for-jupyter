@@ -11,4 +11,5 @@ jobs:
       - uses: s-weigand/trigger-mybinder-build@v1
         with:
           target-repo: heremaps/here-map-widget-for-jupyter
+          service-name: gh
           debug: true
