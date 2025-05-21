@@ -3,7 +3,7 @@
   SPDX-License-Identifier: MIT
 */
 const widgets = require('@jupyter-widgets/base');
-import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle'
+import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle.harp'
 const _ = require('lodash');
 
 export class ObjectModel extends widgets.WidgetModel {

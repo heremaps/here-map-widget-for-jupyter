@@ -4,7 +4,7 @@
 */
 const widgets = require('@jupyter-widgets/base');
 const _ = require('lodash');
-import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle'
+import H from '@here/maps-api-for-javascript/bin/mapsjs.bundle.harp'
 
 export class LayerModel extends widgets.WidgetModel {
   defaults() {

@@ -30,12 +30,14 @@ export class DefaultLayersView extends service.ServiceView {
   }
   create_obj() {
     var ppi = this.model.get('ppi') === null ? undefined : this.model.get('ppi');
+    const engineType = H.Map.EngineType['HARP'];
     var platform = new H.service.Platform({
       apikey: this.map_view.model.get('api_key')
     });
     var defaultLayers = platform.createDefaultLayers({
       tileSize: this.model.get('tile_size'),
-      ppi: ppi
+      ppi: ppi,
+      engineType,
     });
     this.obj = _.get(defaultLayers, this.model.get('layer_name'));
   }
