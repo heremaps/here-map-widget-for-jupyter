@@ -28,6 +28,7 @@ var resolve = {
         "crypto": require.resolve("crypto-browserify"),
         "buffer": require.resolve("buffer/"),
         "stream": require.resolve("stream-browserify")
+        "events": require.resolve("events/") 
     }
 };
 
