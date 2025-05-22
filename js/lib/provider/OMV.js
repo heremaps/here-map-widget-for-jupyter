@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019-2021 HERE Europe B.V.
+  Copyright (C) 2019-2024 HERE Europe B.V.
   SPDX-License-Identifier: MIT
 */
 const provider = require('./Provider.js');
@@ -39,12 +39,14 @@ export class OMVView extends provider.ProviderView {
     return Promise.all([pltform_promise, style_promise]).then(result => {
       const pltform_view = result[0];
       const style_view = result[1];
+      const engineType = H.Map.EngineType["HARP"];
       const platform = pltform_view !== null ? pltform_view.obj : null;
-      const st = style_view !== null ? style_view.obj : null;
+      const config = style_view !== null ? style_view.obj.po : null;
+      const st = new H.map.render.harp.Style(config);
       var omvService = platform.getOMVService({
         path: this.model.get('path')
       });
-      this.obj = new H.service.omv.Provider(omvService, st);
+      this.obj = new H.service.omv.Provider(omvService, st, {engineType, lg:"ja",});
     });
   }
 

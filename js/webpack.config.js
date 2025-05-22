@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019-2021 HERE Europe B.V.
+  Copyright (C) 2019-2024 HERE Europe B.V.
   SPDX-License-Identifier: MIT
 */
 
@@ -27,7 +27,8 @@ var resolve = {
     fallback: {
         "crypto": require.resolve("crypto-browserify"),
         "buffer": require.resolve("buffer/"),
-        "stream": require.resolve("stream-browserify")
+        "stream": require.resolve("stream-browserify"),
+        "events": require.resolve("events/")
     }
 };
 

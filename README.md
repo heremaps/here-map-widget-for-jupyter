@@ -114,6 +114,6 @@ Below projects use `here-map-widget-for-jupyter` as plotting backend
 
 ## License
 
-Copyright (C) 2019-2021 HERE Europe B.V.
+Copyright (C) 2019-2024 HERE Europe B.V.
 
 Unless otherwise noted in `LICENSE` files for specific directories, the [LICENSE](https://github.com/heremaps/here-map-widget-for-jupyter/raw/master/LICENSE) in the root applies to all content in this repository.
