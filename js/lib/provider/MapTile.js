@@ -65,7 +65,7 @@ export class MapTileView extends provider.ProviderView {
       var format = this.model.get('format');
       var options = {}
       if (this.model.get('additional_params')) {
-        options['additionalParameters'] = this.model.get('additional_params');
+        Object.assign(options, this.model.get('additional_params'));
       }
       this.obj = mapTiler.createTileProvider(TileType, scheme, TileSize, format, options);
     });
