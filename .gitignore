@@ -20,4 +20,3 @@ venv
 here_map_widget/nbextension/
 here_map_widget/labextension/
 js/dist/
-yarn.lock
