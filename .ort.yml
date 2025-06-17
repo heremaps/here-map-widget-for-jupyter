@@ -14,6 +14,6 @@ excludes:
     reason: "DOCUMENTATION_OF"
     comment: "Directory is only used for generating documentation for gitlab pages."
   scopes:
-  - name: "devDependencies"
+  - pattern: "devDependencies"
     reason: "DEV_DEPENDENCY_OF"
     comment: "Packages for development only."
