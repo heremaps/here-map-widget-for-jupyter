@@ -41,7 +41,7 @@ export class OMVView extends provider.ProviderView {
       const style_view = result[1];
       const engineType = H.Map.EngineType["HARP"];
       const platform = pltform_view !== null ? pltform_view.obj : null;
-      const config = style_view !== null ? style_view.obj.po : null;
+      const config = style_view !== null ? style_view.model.get('config') : null;
       const st = new H.map.render.harp.Style(config);
       var omvService = platform.getOMVService({
         path: this.model.get('path')
