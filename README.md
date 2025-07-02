@@ -84,7 +84,7 @@ For a development installation (requires yarn v1, you can install it with `conda
     $ npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript
     $ git clone https://github.com/heremaps/here-map-widget-for-jupyter.git
     $ cd here-map-widget-for-jupyter
-    $ pip install -e .[dev]
+    $ pip install -e . # Or .[docs]
 
 If you are using the classic Jupyter Notebook you need to install the nbextension:
 
@@ -96,7 +96,7 @@ If you are using the classic Jupyter Notebook you need to install the nbextensio
 Note for developers:
 
 - the ``-e`` pip option allows one to modify the Python code in-place. Restart the kernel in order to see the changes.
-- the ``[dev]`` key allows one to install dev dependencies in optional-dependencies as well.
+- the ``[docs]`` key allows one to install optional-dependencies to build docs.
 - the ``--symlink`` argument on Linux or OS X allows one to modify the JavaScript code in-place. This feature is not available with Windows.
 
 For developing with JupyterLab:

@@ -35,7 +35,7 @@ jobs:
     - name: Install tools
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine jupyter-packaging
+        pip install hatch
     - name: Build the package
       run: |
         node --version
@@ -43,7 +43,6 @@ jobs:
         yarn --version
         npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript
         pip install .
-        pip install hatch
         hatch build
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@master

@@ -41,7 +41,7 @@ jobs:
     - name: Install here-map-widget-for-jupyter
       run: |
         npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript
-        pip install .[dev]
+        pip install .[docs]
 
     - name: Check installation files
       run: |
@@ -53,16 +53,16 @@ jobs:
         test -f $CONDA_PREFIX/share/jupyter/labextensions/@here/map-widget-for-jupyter/package.json
 
     - name: Lint check
-      run: make lint
+      run: |
+        pip install hatch
+        hatch run lint:check
 
     - name: Import check
       run: python -c 'import here_map_widget'
 
     - name: Build the package (Only on Linux for saving time)
       if: matrix.os == 'ubuntu-latest'
-      run: |
-        pip install hatch
-        hatch build
+      run: hatch build
 
     - name: Build docs (Only on Linux for saving time)
       if: matrix.os == 'ubuntu-latest'
@@ -70,7 +70,5 @@ jobs:
         XYZ_TOKEN: ${{ secrets.XYZ_TOKEN }}
         LS_API_KEY: ${{ secrets.LS_API_KEY }}
       run: |
-        mamba install sphinx sphinx_rtd_theme
-        pip install -r docs/requirements.txt
         cd docs
         make html

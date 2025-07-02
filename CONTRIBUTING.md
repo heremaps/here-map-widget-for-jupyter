@@ -7,28 +7,43 @@ These are mostly guidelines, not rules. Use your best judgement and feel free to
 changes to this document in a pull request.
 
 ## Coding Guidelines
-1. Lint your code contributions as per [pep8 guidelines](https://www.python.org/dev/peps/pep-0008/).
 
-To help you out, we have included a `Makefile` in the root directory which supports the commands below:
+### 1. Lint your code contributions as per [pep8 guidelines](https://www.python.org/dev/peps/pep-0008/).
+
+To help you out, we have scripts in `pyproject.toml` which supports the commands below:
 
 Autoformat code using black:
 
 ```bash
-make black
+hatch run lint:reformat
 ```
 
 Check for linting errors:
 
 ```bash
-make lint
+hatch run lint:check
 ```
 
-2. Sort the imports in each python file as per [pep8 guidelines](https://www.python.org/dev/peps/pep-0008/#imports)
-   Please execute the isort utility to have the imports sorted auto-magically.
+Make sure [hatch](https://hatch.pypa.io/1.13/) CLI is installed via an installer, pip, or conda beforehand.
 
-#### Notebooks
+### 2. Sort the imports in each python file as per [pep8 guidelines](https://www.python.org/dev/peps/pep-0008/#imports)
+
+Please execute the isort utility to have the imports sorted auto-magically.
+
+## Notebooks
 
 Example notebooks are provided in [/examples](./examples).
+
+## Edit documentation
+
+Source of documentaion is available in [/docs](./docs).
+
+Following commands build documentation
+
+```bash
+cd docs
+make html
+```
 
 ## Signing each Commit
 
