@@ -38,7 +38,7 @@ from traitlets import (
     validate,
 )
 
-from ._version import EXTENSION_VERSION
+from .__about__ import EXTENSION_VERSION
 from .configs import DefaultLayerNames
 
 def_loc = [20.5937, 78.9629]

@@ -12,7 +12,7 @@ import sys
 
 import xyzservices.providers as basemaps  # noqa E501
 
-from ._version import __version__, version_info
+from .__about__ import __version__, version_info
 from .configs import *
 from .map import *
 

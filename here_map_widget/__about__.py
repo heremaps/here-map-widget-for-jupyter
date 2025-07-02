@@ -7,10 +7,6 @@
 version_info = (2, 0, 0)
 
 # Module version accessible using here_map_widget.__version__
-__version__ = "%s.%s.%s" % (
-    version_info[0],
-    version_info[1],
-    version_info[2],
-)
+__version__ = "2.0.0"
 
 EXTENSION_VERSION = "^2.0.0"
