@@ -3,6 +3,7 @@
 .idea/
 .vscode/
 build/
+dist/
 *.py[cod]
 src/*
 venv/

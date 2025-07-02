@@ -50,7 +50,7 @@ Use [HERE Maps API for JavaScript](https://developer.here.com/develop/javascript
 
 Before you can install this package, or use the example notebooks to make sure your system meets the following prerequisities:
 
-- A Python installation, 3.6+ recommended, with the `pip` command available to install dependencies
+- A Python installation, 3.9+ recommended, with the `pip` command available to install dependencies
 - A HERE developer account, free and available under [HERE Developer Portal](https://developer.here.com)
 - An [API key](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/dev-apikey.html) from the [HERE Developer Portal](https://developer.here.com)
 
@@ -79,12 +79,12 @@ Below extra commands are required only if you are using JupyterLab (version 2 or
 
 ### Installation from source repository on GitHub
 
-For a development installation (requires yarn, you can install it with `conda install -c conda-forge yarn`):
+For a development installation (requires yarn v1, you can install it with `conda install -c conda-forge yarn@1.22.22`):
 
     $ npm config set @here:registry https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript
     $ git clone https://github.com/heremaps/here-map-widget-for-jupyter.git
     $ cd here-map-widget-for-jupyter
-    $ pip install -e .
+    $ pip install -e .[dev]
 
 If you are using the classic Jupyter Notebook you need to install the nbextension:
 
@@ -96,6 +96,7 @@ If you are using the classic Jupyter Notebook you need to install the nbextensio
 Note for developers:
 
 - the ``-e`` pip option allows one to modify the Python code in-place. Restart the kernel in order to see the changes.
+- the ``[dev]`` key allows one to install dev dependencies in optional-dependencies as well.
 - the ``--symlink`` argument on Linux or OS X allows one to modify the JavaScript code in-place. This feature is not available with Windows.
 
 For developing with JupyterLab:

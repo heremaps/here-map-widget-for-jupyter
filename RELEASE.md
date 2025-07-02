@@ -11,13 +11,19 @@ The following are mandatory pre-release steps to bring the repository into a pro
 - Make sure all tests listed in `CONTRIBUTING.md` pass successfully.
 - Make sure badges appear as expected in the [README.md on GitHub](https://github.com/heremaps/here-map-widget-for-jupyter/blob/master/README.md).
 
+## Packaging
+- Install [hatch](https://hatch.pypa.io/1.13/) CLI via an installer, pip, or conda.
+- Run `hatch build`
+- Make sure sdist and wheel packages are created in [dist](dist/).
+- Make sure the wheel package works by `pip install /path/to/dist/directory/here_map_widget_for_jupyter-version-py2.py3-none-any.whl`.
+- Create a Merge Request in the GitHub.
+
 ## Release on PyPI
 
 - Create a new release in the GitHub UI by clicking on [Draft a new release](https://github.com/heremaps/here-map-widget-for-jupyter/releases/new) button, then update the tag version and release description.
 - Click on the `Publish release` button to release the [package on PyPI](https://pypi.org/project/here-map-widget-for-jupyter/).
 - Once released verify that `pip install here-map-widget-for-jupyter` does indeed install the latest release.
 
-  
 ## Release on Anaconda's conda-forge channel
 
 - Go to the [here-map-widget-for-jupyter-feedstock](https://github.com/conda-forge/here-map-widget-for-jupyter-feedstock) repository.
