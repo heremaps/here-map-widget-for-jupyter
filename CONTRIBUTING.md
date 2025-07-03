@@ -45,6 +45,20 @@ cd docs
 make html
 ```
 
+## Rebuild
+
+The following command allows you to delete final and intermediate artifacts from the project directory.
+
+```bash
+hatch run clean-all
+```
+
+It's possible to try dry-run before executing removal.
+
+```bash
+hatch run clean-all-dry
+```
+
 ## Signing each Commit
 
 When you file a pull request, we ask that you sign off the

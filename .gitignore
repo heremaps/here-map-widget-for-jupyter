@@ -1,20 +1,22 @@
-*.egg-info/
-.ipynb_checkpoints/
 .idea/
 .vscode/
-build/
-dist/
-*.py[cod]
-src/*
 venv/
 
-# Compiled javascript
+# Main module
+*.py[cod]
 here_map_widget/static/
 here_map_widget/nbextension/
 here_map_widget/labextension/
 
+# Package
+*.egg-info/
+dist/
+
 # OS X
 .DS_Store
+
+# Notebooks
+.ipynb_checkpoints/
 
 # Source javascript
 js/.yarn/

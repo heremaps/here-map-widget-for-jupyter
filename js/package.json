@@ -34,6 +34,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist/ && rimraf ../here_map_widget/labextension/ && rimraf ../here_map_widget/nbextension",
+    "cleanAll": "yarn run clean && rimraf yarn.lock",
     "prepublish": "webpack --mode=production",
     "build": "webpack --mode=production",
     "build:extensions": "webpack --mode=production && jupyter labextension build .",
