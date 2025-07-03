@@ -92,15 +92,15 @@ dependencies = ["pyclean"]
 [tool.hatch.envs.default.scripts]
 clean-all = [
     "cd js && yarn run cleanAll",
+    "pip uninstall -y here-map-widget-for-jupyter",
     "pyclean . --erase js/node_modules/**/* js/node_modules/ --yes --verbose",
     "pyclean . --debris --verbose",
-    "pip uninstall -y here-map-widget-for-jupyter",
 ]
 clean-all-dry = [
     "echo \"cd js && yarn run cleanAll\"",
+    "echo \"pip uninstall -y here-map-widget-for-jupyter\"",
     "pyclean . --erase js/node_modules/**/* js/node_modules/ --yes --verbose --dry-run",
     "pyclean . --debris --verbose --dry-run",
-    "echo \"pip uninstall -y here-map-widget-for-jupyter\""
 ]
 
 [tool.hatch.envs.lint]
